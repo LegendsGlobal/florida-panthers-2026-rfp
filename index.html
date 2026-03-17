@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Panthers Venue Intelligence">
+<meta name="theme-color" content="#041E42">
+<meta name="description" content="Florida Panthers Venue Audience Intelligence — Amerant Bank Arena. Confidential market analysis, audience personas, and hospitality bidder strategy.">
+<meta name="robots" content="noindex, nofollow">
+<title>Panthers Venue Audience Intelligence</title>
+<style>
+/* ── LEGENDS BRAND FONTS ── */
+@font-face { font-family: 'Nicky Sans'; src: url('fonts/NickySans-Regular.otf') format('opentype'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Nicky Sans'; src: url('fonts/NickySans-Light.otf') format('opentype'); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Nicky Sans'; src: url('fonts/NickySans-Medium.otf') format('opentype'); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Nicky Sans'; src: url('fonts/NickySans-SemiBold.otf') format('opentype'); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Nicky Sans'; src: url('fonts/NickySans-Bold.otf') format('opentype'); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Nicky Sans'; src: url('fonts/NickySans-ExtraBold.otf') format('opentype'); font-weight: 800; font-style: normal; font-display: swap; }
+
+:root {
+  /* Panthers brand colors */
+  --navy:        #041E42;
+  --navy-mid:    #0a2d5e;
+  --red:         #C8102E;
+  --red-dark:    #9e0d24;
+  --red-light:   #F5E2E5;
+  --gold:        #B9975B;
+  --gold-light:  #a5844a;
+  --ice:         #D9EEF5;
+  --ice-dark:    #a8d4e6;
+  --off-white:   #f9fafb;
+  --slate:       #374151;
+  --muted:       #6b7280;
+  --divider:     #f3f4f6;
+  --card-bg:     #ffffff;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Nicky Sans', 'Georgia', system-ui, sans-serif;
+  background: #f9fafb;
+  color: #374151;
+  overflow-x: hidden;
+  padding-top: calc(70px + env(safe-area-inset-top));
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: var(--navy);
+  border-bottom: 1px solid #0a2d5e;
+  padding-top: env(safe-area-inset-top);
+  display: flex; flex-direction: column; width: 100%;
+}
+.nav-tier1 {
+  display: flex; align-items: stretch; height: 40px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.nav-tier1::-webkit-scrollbar { display: none; }
+.nav-logo {
+  font-family: 'Nicky Sans', system-ui, sans-serif;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--gold); padding: 0 1.1rem;
+  display: flex; align-items: center;
+  border-right: 1px solid rgba(255,255,255,0.08);
+  white-space: nowrap; flex-shrink: 0;
+}
+.nav-tab {
+  font-family: 'Nicky Sans', system-ui, sans-serif;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase;
+  color: rgba(255,255,255,0.32);
+  background: transparent; border: none;
+  border-right: 1px solid rgba(255,255,255,0.05);
+  padding: 0 1.1rem; cursor: pointer; white-space: nowrap;
+  display: flex; align-items: center; gap: 5px;
+  transition: color 0.18s, background 0.18s;
+  position: relative;
+  touch-action: manipulation; -webkit-tap-highlight-color: transparent;
+}
+.nav-tab::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+  background: transparent; transition: background 0.2s;
+}
+.nav-tab:hover { color: rgba(255,255,255,0.65); background: rgba(255,255,255,0.03); }
+.nav-tab.active { color: white; }
+.nav-tab[data-ch="overview"].active::after { background: var(--gold); }
+.nav-tab[data-ch="market"].active            { color: #C8102E; }
+.nav-tab[data-ch="market"].active::after     { background: var(--red); }
+.nav-tab[data-ch="data"].active::after       { background: #9B8ABF; }
+.nav-tab[data-ch="personas"].active::after   { background: rgba(255,255,255,0.45); }
+.nav-tab[data-ch="strategy"].active::after   { background: var(--gold); }
+.tab-dot {
+  width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; opacity: 0.65;
+}
+.nav-tier2 {
+  height: 30px; display: flex; align-items: center;
+  padding: 0 0.85rem; gap: 2px;
+  overflow-x: auto; scrollbar-width: none;
+}
+.nav-tier2::-webkit-scrollbar { display: none; }
+.nav-sub {
+  font-family: 'Nicky Sans', system-ui, sans-serif;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase;
+  color: rgba(255,255,255,0.38);
+  background: transparent; border: 1px solid transparent;
+  padding: 2px 9px; border-radius: 4px;
+  cursor: pointer; white-space: nowrap; flex-shrink: 0;
+  transition: all 0.15s;
+  touch-action: manipulation; -webkit-tap-highlight-color: transparent;
+}
+.nav-sub:hover { color: rgba(255,255,255,0.7); border-color: rgba(255,255,255,0.14); }
+.nav-sub.active { color: white; background: rgba(255,255,255,0.09); border-color: rgba(255,255,255,0.2); }
+.nav-tier2[data-ch="market"]   .nav-sub.active { color: #F07A8A; background: rgba(200,16,46,0.12); border-color: rgba(200,16,46,0.35); }
+.nav-tier2[data-ch="strategy"] .nav-sub.active { color: var(--gold); background: rgba(185,151,91,0.12); border-color: rgba(185,151,91,0.35); }
+
+/* ── SECTION BASE ── */
+.slide {
+  min-height: 100vh;
+  padding: 48px 7vw 60px;
+  display: flex; flex-direction: column; justify-content: center;
+  position: relative; overflow: hidden;
+}
+.slide-dark  { background: var(--navy); }
+.slide-light { background: #f9fafb; color: #374151; }
+.slide-cream { background: #f9fafb; color: #374151; }
+.slide-ice   { background: #EEF7FC; color: #374151; }
+
+/* ── EYEBROW ── */
+.eyebrow {
+  font-family: 'Nicky Sans', system-ui, sans-serif;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+.eyebrow-gold  { color: var(--gold); }
+.eyebrow-red   { color: var(--red); }
+.eyebrow-muted { color: var(--muted); }
+.eyebrow-navy  { color: var(--navy); }
+
+/* ── TYPOGRAPHY ── */
+h1.display {
+  font-family: 'Nicky Sans', system-ui, sans-serif;
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-weight: 300; line-height: 1.05; letter-spacing: -0.01em;
+  color: var(--off-white);
+}
+h2.section-title {
+  font-family: 'Nicky Sans', system-ui, sans-serif;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 400; line-height: 1.1; margin-bottom: 0.5rem;
+}
+.slide-light h2.section-title,
+.slide-cream h2.section-title,
+.slide-ice   h2.section-title { color: var(--navy); }
+.slide-dark  h2.section-title { color: var(--off-white); }
+h3.card-title {
+  font-family: 'Nicky Sans', system-ui, sans-serif;
+  font-size: 16px; font-weight: 700; letter-spacing: 0.03em;
+  text-transform: uppercase; margin-bottom: 0.4rem;
+}
+p.body    { font-size: 15px; line-height: 1.75; font-weight: 300; }
+p.caption { font-size: 12px; color: var(--muted); margin-top: 0.3rem; }
+
+/* ── ACCENT BAR ── */
+.accent-bar-left {
+  position: absolute; left: 0; top: 0; bottom: 0; width: 5px;
+}
+.slide-dark .accent-bar-left  { background: var(--gold); }
+.red-accent .accent-bar-left  { background: var(--red); }
+.gold-accent .accent-bar-left { background: var(--gold); }
+
+/* ── COVER SLIDE ── */
+#slide-1 { background: var(--navy); padding-top: 2rem; justify-content: center; }
+.cover-grid {
+  display: grid; grid-template-columns: 1fr 360px; gap: 4rem; align-items: center; max-width: 1200px;
+}
+.cover-left { padding-left: 5px; }
+.cover-tagline {
+  font-size: 14px; color: var(--gold); letter-spacing: 0.1em; margin-bottom: 1.5rem;
+  font-family: 'Nicky Sans', system-ui, sans-serif; font-weight: 600; text-transform: uppercase;
+}
+.cover-subtitle {
+  font-size: 16px; color: var(--muted); margin-top: 1.5rem; font-weight: 300; line-height: 1.6;
+}
+.cover-meta {
+  margin-top: 3rem; padding-top: 1.5rem;
+  border-top: 1px solid rgba(185,151,91,0.3);
+  font-size: 12px; color: var(--muted); letter-spacing: 0.05em;
+  display: flex; gap: 2.5rem;
+}
+.cover-meta span { display: flex; flex-direction: column; gap: 2px; }
+.cover-meta strong { color: var(--off-white); font-size: 15px; font-weight: 500; }
+.venue-block-single {
+  padding: 2rem 2rem;
+  border-left: 4px solid var(--red);
+  background: rgba(200,16,46,0.12);
+  margin-bottom: 1rem;
+}
+.venue-block-label {
+  font-family: 'Nicky Sans', system-ui, sans-serif;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+  margin-bottom: 0.3rem; color: var(--red);
+}
+.venue-block-name {
+  font-family: 'Nicky Sans', system-ui, sans-serif;
+  font-size: 22px; font-weight: 600; color: var(--off-white); line-height: 1.1; margin-bottom: 0.2rem;
+}
+.venue-block-city { font-size: 12px; color: var(--muted); }
+.preliminary-note {
+  padding: 1rem 1.25rem; margin-top: 1rem;
+  background: rgba(185,151,91,0.09); border-left: 3px solid var(--gold);
+  font-size: 12px; color: rgba(255,255,255,0.6); line-height: 1.65; font-style: italic;
+}
+
+/* ── METHODOLOGY ── */
+.method-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.5rem;
+}
+.method-card {
+  background: #ffffff; border-radius: 12px; border: 1px solid #f3f4f6;
+  padding: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); position: relative;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.method-card:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(0,0,0,0.08); }
+.method-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+}
+.method-card.gold::before   { background: var(--gold); }
+.method-card.red-c::before  { background: var(--red); }
+.method-card.navy-c::before { background: var(--navy); }
+.method-num {
+  font-family: 'Nicky Sans', system-ui, sans-serif;
+  font-size: 48px; font-weight: 300; line-height: 1; margin-bottom: 0.75rem;
+}
+.method-card.gold .method-num   { color: var(--gold); }
+.method-card.red-c .method-num  { color: var(--red); }
+.method-card.navy-c .method-num { color: var(--navy); }
+.method-card h3 { color: var(--navy); font-size: 15px; font-weight: 600; margin-bottom: 0.6rem; }
+.method-card p  { font-size: 13.5px; color: var(--slate); line-height: 1.65; font-weight: 300; }
+.method-footer {
+  margin-top: 2rem; padding-top: 1.25rem;
+  border-top: 1px solid var(--divider);
+  font-size: 12px; color: var(--muted);
+}
+
+/* ── SNAPSHOT ── */
+.snapshot-single { max-width: 900px; margin-top: 2rem; }
+.snapshot-col {
+  padding: 2rem;
+  background: var(--red-light);
+  border-top: 4px solid var(--red);
+}
+.snapshot-header {
+  font-family: 'Nicky Sans', system-ui, sans-serif;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+  margin-bottom: 1.5rem; padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(200,16,46,0.2);
+  color: var(--red-dark);
+}
+.stat-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.stat-item { padding: 0.75rem 0; border-bottom: 1px solid rgba(200,16,46,0.12); }
+.stat-val  { font-family: 'Nicky Sans', system-ui, sans-serif; font-size: 28px; font-weight: 600; line-height: 1; color: var(--red); }
+.stat-label { font-size: 11px; color: var(--muted); margin-top: 2px; line-height: 1.3; }
+
+/* ── MARKET LAYOUT ── */
+.market-layout {
+  display: grid; grid-template-columns: 1fr 380px; gap: 4rem; align-items: start; margin-top: 2rem;
+}
+.market-section { margin-bottom: 1.75rem; }
+.market-section-label {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.4rem;
+}
+.market-section p { font-size: 14px; line-height: 1.75; color: var(--slate); font-weight: 300; }
+.market-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--divider); }
+.mstat { background: #ffffff; padding: 1.25rem 1.25rem 1rem; border-radius: 8px; }
+.mstat-val    { font-family: 'Nicky Sans', system-ui, sans-serif; font-size: 34px; font-weight: 600; line-height: 1; }
+.mstat-label  { font-size: 11px; color: var(--muted); margin-top: 4px; line-height: 1.35; }
+.mstat-source { font-size: 10px; color: #B0B8C4; margin-top: 2px; font-style: italic; }
+.red-accent .mstat-val  { color: var(--red); }
+.gold-accent .mstat-val { color: var(--gold); }
+
+/* ── EVENT CARDS ── */
+.event-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
+.event-card {
+  background: #ffffff; border-radius: 12px; border: 1px solid #f3f4f6;
+  padding: 1.25rem 1.25rem 1.25rem 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  position: relative; transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.event-card:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(0,0,0,0.08); }
+.event-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; }
+.event-card.tier-a::before { background: var(--red); }
+.event-card.tier-b::before { background: var(--gold); }
+.event-card.tier-c::before { background: var(--navy); }
+.event-card.tier-d::before { background: #7B66B2; }
+.event-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem; }
+.event-name   { font-weight: 600; font-size: 14px; color: var(--navy); }
+.event-buyers { font-size: 12px; font-weight: 600; }
+.tier-a .event-buyers { color: var(--red); }
+.tier-b .event-buyers { color: #a5844a; }
+.tier-c .event-buyers { color: var(--navy); }
+.tier-d .event-buyers { color: #7B66B2; }
+.event-desc   { font-size: 12.5px; color: var(--muted); line-height: 1.55; font-weight: 300; }
+
+/* ── DATA TENSIONS ── */
+.tension-intro { font-size: 14px; line-height: 1.7; color: var(--muted); margin-bottom: 2rem; font-weight: 300; max-width: 700px; }
+.tension-table { width: 100%; border-collapse: collapse; }
+.tension-table th {
+  text-align: left; font-family: 'Nicky Sans', system-ui, sans-serif;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--muted); padding: 0.6rem 1rem;
+  border-bottom: 2px solid var(--navy); background: var(--off-white);
+}
+.tension-table td { padding: 0.85rem 1rem; font-size: 13px; vertical-align: top; line-height: 1.55; border-bottom: 1px solid var(--divider); color: var(--slate); }
+.tension-table tr:nth-child(even) td { background: rgba(0,0,0,0.02); }
+.tension-table td:first-child { font-weight: 600; color: var(--navy); font-size: 12px; width: 14%; }
+.tension-table td:nth-child(4) { font-weight: 600; color: var(--navy-mid); }
+.tension-callout {
+  margin-top: 1.5rem; padding: 1rem 1.25rem;
+  background: rgba(185,151,91,0.09); border-left: 3px solid var(--gold);
+  font-size: 13px; color: var(--slate); line-height: 1.65; font-style: italic;
+}
+
+/* ── PERSONA OVERVIEW ── */
+#slide-9 { background: var(--navy-mid); }
+.persona-overview-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+  background: rgba(255,255,255,0.05); margin-top: 2rem;
+}
+.persona-overview-card {
+  background: rgba(255,255,255,0.03); padding: 1.5rem 1.25rem;
+  cursor: pointer; transition: background 0.2s; border-top: 3px solid transparent;
+}
+.persona-overview-card:hover { background: rgba(255,255,255,0.07); }
+.po-name  { font-family: 'Nicky Sans', system-ui, sans-serif; font-size: 18px; font-weight: 400; color: var(--off-white); margin-bottom: 0.4rem; line-height: 1.2; }
+.po-venue { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.5rem; }
+.po-attrs { font-size: 11.5px; color: rgba(255,255,255,0.45); line-height: 1.6; }
+.po-share { margin-top: 0.75rem; font-family: 'Nicky Sans', system-ui, sans-serif; font-size: 20px; font-weight: 300; }
+
+/* ── PERSONA DETAIL ── */
+.persona-slide { background: var(--off-white); color: var(--slate); }
+.persona-header {
+  padding: 1.5rem 7vw; margin: -48px -7vw 2rem;
+  padding-top: calc(48px + 1.5rem); padding-left: 7vw; padding-right: 7vw;
+}
+.persona-header.red-ph    { background: var(--red); }
+.persona-header.navy-ph   { background: var(--navy); }
+.persona-header.gold-ph   { background: #7a6035; }
+.persona-header.green-ph  { background: #16a34a; }
+.persona-header.purple-ph { background: #3A2D6E; }
+.persona-header.teal-ph   { background: #0C5F5A; }
+.persona-header.coral-ph  { background: #C74B31; }
+.ph-eyebrow  { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 0.3rem; font-family: 'Nicky Sans', system-ui, sans-serif; font-weight: 600; }
+.ph-name     { font-family: 'Nicky Sans', system-ui, sans-serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 400; color: white; line-height: 1.05; }
+.ph-tagline  { font-size: 15px; color: rgba(255,255,255,0.7); margin-top: 0.4rem; font-style: italic; font-weight: 300; }
+.ph-meta     { display: flex; gap: 2rem; margin-top: 1rem; flex-wrap: wrap; }
+.ph-tag      { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; background: rgba(255,255,255,0.15); padding: 4px 12px; border-radius: 4px; color: white; }
+.persona-body { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+.persona-col-label { font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.75rem; padding-bottom: 0.5rem; border-bottom: 2px solid; }
+.persona-section { margin-bottom: 1.75rem; }
+.persona-section-head { font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.4rem; }
+.persona-section p { font-size: 13.5px; line-height: 1.7; color: var(--slate); font-weight: 300; }
+.fb-item  { display: flex; gap: 0.75rem; margin-bottom: 0.9rem; align-items: flex-start; }
+.fb-dash  { width: 18px; height: 2px; flex-shrink: 0; margin-top: 10px; }
+.fb-text  { font-size: 13.5px; line-height: 1.65; color: var(--slate); font-weight: 300; }
+.fb-text strong { font-weight: 600; color: var(--navy); }
+.personicx-tag { display: inline-block; background: rgba(0,0,0,0.05); padding: 3px 10px; border-radius: 2px; font-size: 11px; color: var(--muted); margin-top: 0.5rem; font-style: italic; }
+
+/* ── BIDDER STRATEGY ── */
+.strategy-hero { margin: 2rem 0; padding: 1.25rem 1.75rem; border-left: 4px solid; }
+.strategy-hero.red-s   { border-color: var(--red);  background: rgba(200,16,46,0.06); }
+.strategy-hero.gold-s  { border-color: var(--gold); background: rgba(185,151,91,0.07); }
+.strategy-hero-label { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.35rem; }
+.strategy-hero-text  { font-family: 'Nicky Sans', system-ui, sans-serif; font-size: 20px; font-weight: 400; line-height: 1.4; }
+.red-s  .strategy-hero-text { color: var(--red-dark); }
+.gold-s .strategy-hero-text { color: #7a6035; }
+.strategy-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.strat-header { padding: 0.6rem 1rem; margin-bottom: 0; font-family: 'Nicky Sans', system-ui, sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: white; }
+.strat-header.do-header   { background: #16a34a; }
+.strat-header.dont-header { background: #dc2626; }
+.strat-body  { background: var(--card-bg); border: 1px solid var(--divider); border-top: none; padding: 1rem; }
+.strat-item  { display: flex; gap: 0.75rem; padding: 0.6rem 0; border-bottom: 1px solid var(--divider); align-items: flex-start; font-size: 13px; line-height: 1.55; color: var(--slate); font-weight: 300; }
+.strat-item:last-child { border-bottom: none; }
+.strat-icon      { font-size: 13px; flex-shrink: 0; margin-top: 1px; }
+.strat-icon.do   { color: #16a34a; }
+.strat-icon.dont { color: #dc2626; }
+
+/* ── TAKEAWAYS ── */
+#slide-17 { background: var(--navy); }
+.takeaway-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2.5rem; }
+.takeaway-card {
+  background: rgba(255,255,255,0.05); border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.1); padding: 2rem;
+  position: relative; transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.takeaway-card:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(0,0,0,0.2); }
+.takeaway-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+.takeaway-card.t1::before { background: var(--red); }
+.takeaway-card.t2::before { background: #D4B97A; }
+.takeaway-card.t3::before { background: #A99AD4; }
+.takeaway-card.t4::before { background: #16a34a; }
+.takeaway-num  { font-family: 'Nicky Sans', system-ui, sans-serif; font-size: 52px; font-weight: 300; line-height: 1; margin-bottom: 0.25rem; }
+.t1 .takeaway-num { color: var(--red); }
+.t2 .takeaway-num { color: #D4B97A; }
+.t3 .takeaway-num { color: #A99AD4; }
+.t4 .takeaway-num { color: #16a34a; }
+.takeaway-venue { font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; }
+.takeaway-card p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.6); font-weight: 300; }
+
+/* ── FADE-IN ── */
+.fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .cover-grid, .market-layout, .persona-body, .strategy-cols,
+  .method-grid, .takeaway-grid, .event-grid { grid-template-columns: 1fr; }
+  .persona-overview-grid { grid-template-columns: repeat(2,1fr); }
+  .stat-grid-3 { grid-template-columns: 1fr 1fr; }
+  .slide { padding: 40px 5vw 50px; }
+}
+@media (max-width: 430px) {
+  .slide { padding: 28px 1.25rem max(2.5rem, env(safe-area-inset-bottom)); }
+  .section-title { font-size: 1.4rem !important; }
+  .persona-overview-grid { grid-template-columns: 1fr; }
+  .stat-grid-3 { grid-template-columns: 1fr; }
+  .nav-tab, .nav-sub { min-height: 44px; min-width: 44px; display: inline-flex; align-items: center; flex-shrink: 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- ════ PASSWORD GATE ════════════════════════════════════════════════════ -->
+<style>
+#gate {
+  position: fixed; inset: 0; z-index: 9999;
+  background: var(--navy);
+  display: flex; align-items: center; justify-content: center;
+}
+#gate.unlocked { display: none; }
+.gate-inner {
+  width: 100%; max-width: 400px; padding: 0 2rem;
+  display: flex; flex-direction: column; align-items: center;
+}
+.gate-wordmark {
+  font-family: 'Nicky Sans', system-ui, sans-serif;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 3rem;
+}
+.gate-title {
+  font-family: 'Nicky Sans', system-ui, sans-serif;
+  font-size: 2.6rem; font-weight: 300; line-height: 1.1;
+  color: #f9fafb; text-align: center; margin-bottom: 0.4rem;
+}
+.gate-sub { font-size: 13px; color: #6b7280; text-align: center; font-weight: 300; margin-bottom: 2.5rem; }
+.gate-field {
+  width: 100%; padding: 0.9rem 1rem;
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px; color: #f9fafb;
+  font-family: 'Nicky Sans', system-ui, sans-serif; font-size: 15px;
+  outline: none; transition: border-color 0.2s; letter-spacing: 0.05em; margin-bottom: 0.75rem;
+}
+.gate-field::placeholder { color: rgba(255,255,255,0.22); }
+.gate-field:focus { border-color: var(--gold); }
+.gate-btn {
+  width: 100%; padding: 0.85rem; background: var(--gold); color: #ffffff;
+  border: none; border-radius: 12px;
+  font-family: 'Nicky Sans', system-ui, sans-serif; font-size: 13px;
+  font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+  cursor: pointer; transition: background 0.2s; margin-bottom: 0.5rem;
+  touch-action: manipulation; -webkit-tap-highlight-color: transparent;
+}
+.gate-btn:hover { background: var(--gold-light); }
+.gate-err  { font-size: 12px; color: var(--red); text-align: center; height: 18px; }
+.gate-rule { width: 48px; height: 1px; background: rgba(185,151,91,0.3); margin: 2rem auto; }
+.gate-meta { font-size: 11px; color: rgba(255,255,255,0.18); text-align: center; letter-spacing: 0.04em; }
+</style>
+
+<div id="gate">
+  <div class="gate-inner">
+    <div class="gate-wordmark">Venue Audience Intelligence</div>
+    <div class="gate-title">Confidential<br>Report</div>
+    <div class="gate-sub">Enter the access password to continue</div>
+    <input type="password" id="pwInput" class="gate-field" placeholder="Password" autocomplete="current-password">
+    <button class="gate-btn" id="pwBtn">Enter →</button>
+    <div class="gate-err" id="pwErr"></div>
+    <div class="gate-rule"></div>
+    <div class="gate-meta">Florida Panthers · Amerant Bank Arena · March 2026</div>
+  </div>
+</div>
+
+<!-- ── NAV ── -->
+<nav id="mainNav" style="display:none">
+  <div class="nav-tier1">
+    <div class="nav-logo">Panthers Intelligence</div>
+    <button class="nav-tab active" data-ch="overview">Overview</button>
+    <button class="nav-tab" data-ch="market"><span class="tab-dot" style="background:var(--red)"></span>South Florida</button>
+    <button class="nav-tab" data-ch="data">Analysis</button>
+    <button class="nav-tab" data-ch="personas">Personas</button>
+    <button class="nav-tab" data-ch="strategy">Strategy</button>
+  </div>
+  <div class="nav-tier2" id="navTier2" data-ch="overview">
+    <button class="nav-sub active" data-slide="slide-1">Cover</button>
+    <button class="nav-sub" data-slide="slide-2">Methods</button>
+    <button class="nav-sub" data-slide="slide-3">At a Glance</button>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 1 — COVER
+══════════════════════════════════════════════ -->
+<section class="slide slide-dark" id="slide-1" data-label="Cover">
+  <div class="accent-bar-left"></div>
+  <div class="cover-grid">
+    <div class="cover-left fade-in">
+      <div class="cover-tagline">Market Analysis · Audience Personas · Hospitality Strategy</div>
+      <h1 class="display">Venue Audience<br><em>Intelligence</em></h1>
+      <div class="cover-subtitle">A market-driven portrait of South Florida's sports and entertainment audience at Amerant Bank Arena — informed by U.S. Census ACS 2024 data, NHL fan research, and deep South Florida cultural and culinary analysis. Ticketing data enrichment forthcoming.</div>
+      <div class="cover-meta">
+        <span><strong>1.2M+</strong> annual visitors</span>
+        <span><strong>125+</strong> events/year</span>
+        <span><strong>3M+</strong> tri-county draw</span>
+        <span><strong>Back-to-back</strong> Stanley Cup champs</span>
+      </div>
+    </div>
+    <div class="fade-in" style="transition-delay:0.2s">
+      <div class="venue-block-single">
+        <div class="venue-block-label">Primary Venue</div>
+        <div class="venue-block-name">Amerant Bank Arena</div>
+        <div class="venue-block-city">Sunrise, Florida · 19,250 cap. · Broward County</div>
+      </div>
+      <div class="preliminary-note">
+        <strong style="color:var(--gold)">Note on data maturity:</strong> This report is built on U.S. Census ACS 2024 market intelligence, NHL fan demographic research, and South Florida cultural analysis. Acxiom-enriched ticketing data will be incorporated upon delivery, at which point persona profiles and market sizing will be refined with actual buyer records.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 2 — METHODOLOGY
+══════════════════════════════════════════════ -->
+<section class="slide slide-light" id="slide-2" data-label="Methods">
+  <div class="eyebrow eyebrow-muted">About the Data</div>
+  <h2 class="section-title">What This Analysis Is Built On</h2>
+  <div class="method-grid fade-in">
+    <div class="method-card gold">
+      <div class="method-num">01</div>
+      <h3>U.S. Census ACS 2024</h3>
+      <p>American Community Survey 2024 data for Broward, Miami-Dade, and Palm Beach counties — population, income, race, education, homeownership, and household structure for the three-county South Florida market that feeds Amerant Bank Arena.</p>
+    </div>
+    <div class="method-card red-c">
+      <div class="method-num">02</div>
+      <h3>NHL Fan Research</h3>
+      <p>2024–2025 industry surveys on NHL fan demographics — age, income, gender, education, and ethnicity — from S&P Global, SBRnet, Morning Consult, and the NHL's own Diversity & Inclusion Report. Provides national baseline for modeling local Panthers fan profiles.</p>
+    </div>
+    <div class="method-card navy-c">
+      <div class="method-num">03</div>
+      <h3>South Florida Cultural & Culinary Analysis</h3>
+      <p>Primary research into South Florida's dominant food culture — with a particular focus on Cuban and Latin culinary identity in Broward County, event programming at Amerant Bank Arena, and the local restaurant competitive landscape relevant to hospitality concession benchmarking.</p>
+    </div>
+  </div>
+  <div class="method-footer fade-in">Preliminary analysis · Ticketing data pending enrichment &nbsp;·&nbsp; Arena capacity: 19,250 (hockey config) &nbsp;·&nbsp; Annual events: 125+ &nbsp;·&nbsp; Annual attendance: 1.2M+ &nbsp;·&nbsp; Market area: Broward, Miami-Dade, Palm Beach counties</div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 3 — AT A GLANCE
+══════════════════════════════════════════════ -->
+<section class="slide slide-cream" id="slide-3" data-label="Snapshot">
+  <div class="eyebrow eyebrow-muted">At a Glance</div>
+  <h2 class="section-title">Amerant Bank Arena — Market Snapshot</h2>
+  <div class="snapshot-single fade-in">
+    <div class="snapshot-col">
+      <div class="snapshot-header">Amerant Bank Arena · Sunrise, Broward County · Florida Panthers</div>
+      <div class="stat-grid-3">
+        <div class="stat-item"><div class="stat-val">$78K</div><div class="stat-label">Broward County median HH income (ACS 2024)</div></div>
+        <div class="stat-item"><div class="stat-val">$98K</div><div class="stat-label">Estimated Panthers buyer median HH income</div></div>
+        <div class="stat-item"><div class="stat-val">33%</div><div class="stat-label">Broward population Hispanic/Latino</div></div>
+        <div class="stat-item"><div class="stat-val">38%</div><div class="stat-label">Broward population White (non-Hispanic)</div></div>
+        <div class="stat-item"><div class="stat-val">72%</div><div class="stat-label">NHL fans nationally who are White</div></div>
+        <div class="stat-item"><div class="stat-val">17%</div><div class="stat-label">NHL fans nationally who are Hispanic</div></div>
+        <div class="stat-item"><div class="stat-val">63%</div><div class="stat-label">NHL fans nationally who are male</div></div>
+        <div class="stat-item"><div class="stat-val">45%</div><div class="stat-label">NHL fans nationally aged 55+</div></div>
+        <div class="stat-item"><div class="stat-val">65%</div><div class="stat-label">NHL fans with college+ education</div></div>
+        <div class="stat-item"><div class="stat-val">50%</div><div class="stat-label">Ticket revenue growth (Panthers, 2022–2024)</div></div>
+        <div class="stat-item"><div class="stat-val">17</div><div class="stat-label">Fortune 500 / major corporate HQs in South Florida</div></div>
+        <div class="stat-item"><div class="stat-val">3M+</div><div class="stat-label">Combined tri-county population</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 4 — SOUTH FLORIDA MARKET
+══════════════════════════════════════════════ -->
+<section class="slide slide-light red-accent" id="slide-4" data-label="SFL Market">
+  <div class="accent-bar-left"></div>
+  <div class="eyebrow eyebrow-red">South Florida Market</div>
+  <h2 class="section-title">The Most Culturally Complex Arena Market in North America</h2>
+  <div class="market-layout fade-in">
+    <div class="market-body">
+      <div class="market-section">
+        <div class="market-section-label" style="color:var(--red)">A market unlike any other in the NHL</div>
+        <p>Amerant Bank Arena sits in Sunrise, Florida — a city on the western edge of Broward County, equidistant between Fort Lauderdale and Miami. The arena draws from three counties: Broward (1.98M), Miami-Dade (2.76M), and Palm Beach (1.53M). No other NHL market combines this level of Latin American influence, transient population, extreme wealth concentration, and year-round visitor activity in a single catchment zone.</p>
+      </div>
+      <div class="market-section">
+        <div class="market-section-label" style="color:var(--red)">Latin America's northern outpost</div>
+        <p>Broward County is 33% Hispanic/Latino. Miami-Dade is over 70% Hispanic/Latino. Together, these counties represent the largest Cuban-American population in the United States and growing Venezuelan, Colombian, and Caribbean communities. The Cuban food tradition is not one influence among many in South Florida — it is the dominant culinary identity for millions of residents who grew up eating ropa vieja, croquetas, tostones, and café cubano as daily staples, not restaurant experiences.</p>
+      </div>
+      <div class="market-section">
+        <div class="market-section-label" style="color:var(--red)">The NHL fan paradox</div>
+        <p>NHL fans nationally are 72% White and predominantly older (45% aged 55+). South Florida's population is majority-minority and younger. The current Panthers buyer base almost certainly skews significantly whiter and more affluent than the overall tri-county population — a gap that represents both the current revenue reality and a massive long-term growth opportunity that a smart operator should name in their bid.</p>
+      </div>
+      <div class="market-section">
+        <div class="market-section-label" style="color:var(--red)">Two years of unprecedented growth</div>
+        <p>Back-to-back Stanley Cup championships in 2024 and 2025 transformed the Panthers from a struggling franchise (7,000 fans in 2014) into the third-highest attended team in the NHL. Ticket revenue climbed 50% in two years. The team is now a genuine "destination franchise" — a growth market for F&B investment, not a mature one.</p>
+      </div>
+    </div>
+    <div class="market-stats">
+      <div class="mstat"><div class="mstat-val" style="color:var(--red)">$78K</div><div class="mstat-label">Broward median HH income</div><div class="mstat-source">ACS 2024</div></div>
+      <div class="mstat"><div class="mstat-val" style="color:var(--red)">33%</div><div class="mstat-label">Broward Hispanic/Latino population</div><div class="mstat-source">ACS 2024</div></div>
+      <div class="mstat"><div class="mstat-val" style="color:var(--red)">70%+</div><div class="mstat-label">Miami-Dade Hispanic/Latino population</div><div class="mstat-source">ACS 2024</div></div>
+      <div class="mstat"><div class="mstat-val" style="color:var(--red)">19,250</div><div class="mstat-label">Arena capacity (hockey config)</div><div class="mstat-source">Amerant Bank Arena</div></div>
+      <div class="mstat"><div class="mstat-val" style="color:var(--red)">50%</div><div class="mstat-label">Panthers ticket revenue growth (2 yrs)</div><div class="mstat-source">Washington Post, 2024</div></div>
+      <div class="mstat"><div class="mstat-val" style="color:var(--red)">#3</div><div class="mstat-label">NHL home attendance rank (2025-26)</div><div class="mstat-source">The Athletic</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 5 — SOUTH FLORIDA FOOD CULTURE
+══════════════════════════════════════════════ -->
+<section class="slide slide-cream" id="slide-5" data-label="Food Culture">
+  <div class="eyebrow eyebrow-red">South Florida — Culinary Identity</div>
+  <h2 class="section-title">Cuban Roots. Latin Soul. South Florida Table.</h2>
+  <div class="market-layout fade-in">
+    <div class="market-body">
+      <div class="market-section">
+        <div class="market-section-label" style="color:var(--red)">The culinary baseline</div>
+        <p>South Florida's food culture is anchored in Cuban and Caribbean tradition. Croquetas, cubanos, café cubano, tostones, ropa vieja, pastelitos, and black beans with rice are not "ethnic cuisine" to the majority of Broward and Miami-Dade residents — they are comfort food. Family staples. The default reference point. An operator who treats Cuban food as a specialty offering has fundamentally misread the market.</p>
+      </div>
+      <div class="market-section">
+        <div class="market-section-label" style="color:var(--red)">Beyond Cuban: the Latin mosaic</div>
+        <p>South Florida's Latin community is not monolithic. Colombian arepas, Venezuelan cachapas, Haitian griot, Jamaican jerk, Peruvian ceviche, Puerto Rican mofongo — these traditions have deep roots in the tri-county area. The arena event calendar increasingly programs for Latin audiences (Latin Billboard Awards, Uforia Mix Live, reggaeton headliners), and the F&B program must be capable of meeting these communities with genuine respect and fluency.</p>
+      </div>
+      <div class="market-section">
+        <div class="market-section-label" style="color:var(--red)">The northern transplant factor</div>
+        <p>South Florida has one of the highest in-migration rates in the U.S. The Panthers' core fan base — older, educated, affluent — includes a significant population of transplants from the Northeast and Midwest who brought their hockey allegiances south. These fans are acculturated to South Florida food culture but retain a premium dining sensibility from larger urban markets. They know the difference between a real Cuban sandwich and a facsimile.</p>
+      </div>
+      <div class="market-section">
+        <div class="market-section-label" style="color:var(--red)">Local restaurant competitive landscape</div>
+        <p>The Fort Lauderdale / Sunrise restaurant scene includes Cuban institutions like Las Vegas Cuban Cuisine (40+ years), Padrino's (50+ years), and scores of neighborhood cafeterias where café cubano and pan tostado are the default morning ritual. The hospitality benchmark at Amerant Bank Arena is set by this community standard — not by other NHL arenas.</p>
+      </div>
+    </div>
+    <div class="market-stats">
+      <div class="mstat"><div class="mstat-val" style="color:var(--red)">1M+</div><div class="mstat-label">Hispanic residents in Broward + PBC</div><div class="mstat-source">Amerant Bank Arena, Census 2024</div></div>
+      <div class="mstat"><div class="mstat-val" style="color:var(--red)">40yr+</div><div class="mstat-label">Cuban restaurant legacy in Broward</div><div class="mstat-source">Community history</div></div>
+      <div class="mstat"><div class="mstat-val" style="color:var(--red)">125+</div><div class="mstat-label">Annual events at Amerant Bank Arena</div><div class="mstat-source">Arena Info</div></div>
+      <div class="mstat"><div class="mstat-val" style="color:var(--red)">74</div><div class="mstat-label">Private suites at Amerant Bank</div><div class="mstat-source">City of Sunrise</div></div>
+      <div class="mstat"><div class="mstat-val" style="color:var(--red)">4</div><div class="mstat-label">Clubs inside the arena</div><div class="mstat-source">City of Sunrise</div></div>
+      <div class="mstat"><div class="mstat-val" style="color:var(--red)">2,623</div><div class="mstat-label">Club seats</div><div class="mstat-source">Arena Info</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 6 — EVENT MIX
+══════════════════════════════════════════════ -->
+<section class="slide slide-ice" id="slide-6" data-label="Event Mix">
+  <div class="eyebrow eyebrow-red">Amerant Bank Arena — Event Mix</div>
+  <h2 class="section-title">A Building with Many Audiences</h2>
+  <p style="font-size:14px;color:var(--muted);margin-bottom:0.5rem;font-weight:300;max-width:750px">Panthers hockey is the spine of the building — but the event calendar serves a remarkably diverse set of audiences. Each event type demands different F&B programming. A single menu strategy will fail them all.</p>
+  <div class="event-grid fade-in">
+    <div class="event-card tier-a">
+      <div class="event-header"><span class="event-name">Florida Panthers — NHL Hockey</span><span class="event-buyers">41 home games + playoffs</span></div>
+      <div class="event-desc">Back-to-back Stanley Cup champions. Core audience: older, educated, affluent, predominantly White transplant fans + growing local base. Premium per-cap is highest of any event type. Season ticket holders and suite clients drive the economics. Latin fans growing as a segment post-championship.</div>
+    </div>
+    <div class="event-card tier-a">
+      <div class="event-header"><span class="event-name">Latin Music Events (Billboard, Uforia, Amor a La Musica)</span><span class="event-buyers">4–6 events/yr</span></div>
+      <div class="event-desc">The fastest-growing segment at Amerant Bank Arena. Draws heavily from Miami-Dade and Broward's Hispanic population. Latin cuisine authenticity is a non-negotiable expectation. This audience sets a cultural credibility bar that the entire F&B program must be able to meet.</div>
+    </div>
+    <div class="event-card tier-b">
+      <div class="event-header"><span class="event-name">Major Concerts (Billy Joel, Garth Brooks, Beyoncé, Lady Gaga)</span><span class="event-buyers">10–20 events/yr</span></div>
+      <div class="event-desc">Diverse, event-specific audiences. Premium cocktail and elevated food per-cap is high. Audience demographics shift radically by artist — Garth Brooks and Beyoncé require entirely different F&B approaches. Event-specific programming is required.</div>
+    </div>
+    <div class="event-card tier-b">
+      <div class="event-header"><span class="event-name">Disney on Ice / Family Shows</span><span class="event-buyers">4–8 events/yr</span></div>
+      <div class="event-desc">Families with young children across the full income spectrum of South Florida — including lower-income Latino and Caribbean families for whom this may be a significant discretionary event. Kids' bundles, value pricing, and fast-casual brand recognition drive this crowd.</div>
+    </div>
+    <div class="event-card tier-c">
+      <div class="event-header"><span class="event-name">Monster Jam / PBR</span><span class="event-buyers">2–3 events/yr</span></div>
+      <div class="event-desc">Suburban families, budget-conscious. This audience is not the dominant demographic at Amerant Bank — but underserving them is an operational mistake. Value tier, QSR brand recognition, and speed of service are the key variables.</div>
+    </div>
+    <div class="event-card tier-d">
+      <div class="event-header"><span class="event-name">Orange Bowl Basketball Classic + Corporate/Private Events</span><span class="event-buyers">15 function areas</span></div>
+      <div class="event-desc">Amerant Bank Arena has 15 function areas for corporate meetings, seminars, and cocktail receptions. The corporate hospitality business draws from South Florida's major HQ footprint — UnitedHealth (Optum), Chewy, Carnival Corporation, AutoNation. Premium catering standard applies.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 7 — DATA TENSIONS
+══════════════════════════════════════════════ -->
+<section class="slide slide-light" id="slide-7" data-label="Data Gaps">
+  <div class="eyebrow eyebrow-muted">Data Methodology</div>
+  <h2 class="section-title">Where Market Data and Buyer Reality Are Likely to Diverge</h2>
+  <div class="tension-intro">Based on ACS 2024 census data and NHL national fan research, we can already anticipate the key gaps between the South Florida market population and the likely Panthers buyer sample. These gaps will be confirmed and quantified once ticketing data is available.</div>
+  <div class="fade-in">
+  <table class="tension-table">
+    <thead>
+      <tr>
+        <th>Dimension</th>
+        <th>NHL national data suggests</th>
+        <th>South Florida census says</th>
+        <th>Strategic implication</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Ethnicity</td><td>72% of NHL fans nationally are White. Panthers buyers likely similar.</td><td>Broward is 33% Hispanic; Miami-Dade is 70%+ Hispanic. The market majority is Latin.</td><td>The Latin community is the growth audience. A forward-looking operator names Latin culinary partnerships explicitly in their bid.</td></tr>
+      <tr><td>Income</td><td>NHL fans over-index for household income $75K+. Panthers buyers likely median ~$95–105K.</td><td>Broward median is $78K. Miami-Dade median is lower. Significant low-income populations exist in both counties.</td><td>Price for the real city. The buyer sample will appear wealthier than the accessible market. Don't let it mislead concession pricing strategy.</td></tr>
+      <tr><td>Age</td><td>45% of NHL fans nationally are 55+. Over half are 35–64.</td><td>South Florida has a significant retiree/snowbird population reinforcing this skew — AND a young Latin population that's an emerging opportunity.</td><td>Premium tier must serve older affluent fans. But the building's future revenue growth lives in younger Latin audiences. Design for both.</td></tr>
+      <tr><td>Gender</td><td>63% of NHL fans nationally are male.</td><td>South Florida gender split is roughly even across the market population.</td><td>The male-majority F&B baseline (craft beer, premium meats) is correct for hockey — but women drive family and group purchasing decisions. Beverage and experiential programming must serve both.</td></tr>
+      <tr><td>Latin Fans</td><td>17% of NHL fans nationally are Hispanic. Panthers may run higher given market.</td><td>The tri-county area is the most Hispanic large metro in the continental U.S.</td><td>The Panthers' Latin fan base will grow disproportionately as the team's success deepens local roots. Latin F&B programming is a leading indicator of this fan base, not an afterthought.</td></tr>
+      <tr><td>Tourism</td><td>Not captured in ticketing or fan data.</td><td>South Florida is one of the nation's top tourist destinations. Fort Lauderdale alone sees 14M+ annual visitors.</td><td>Tourist overlay boosts premium per-cap on major events. Out-of-market visitors have elevated event-day spend appetite — particularly for culturally distinctive South Florida food experiences.</td></tr>
+    </tbody>
+  </table>
+  <div class="tension-callout">The most important data point the ticketing analysis will confirm: How closely does the current Panthers buyer base reflect the Latin majority of South Florida? The answer to that question determines the size of the growth opportunity — and should shape how boldly a hospitality bidder invests in Latin-forward culinary programming as a long-term revenue strategy, not just a cultural gesture.</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 8 — PERSONA OVERVIEW
+══════════════════════════════════════════════ -->
+<section class="slide" id="slide-8" data-label="Personas" style="background:var(--navy-mid)">
+  <div class="eyebrow eyebrow-gold">Audience Personas</div>
+  <h2 class="section-title" style="color:var(--off-white)">The 6 Audience Personas</h2>
+  <p style="font-size:14px;color:var(--muted);margin-bottom:2rem;font-weight:300">Derived from NHL national fan research, ACS 2024 South Florida demographics, event-mix analysis, and South Florida culinary and cultural context. Will be refined with Acxiom-enriched ticketing data.</p>
+  <div class="persona-overview-grid fade-in" id="personaGrid"></div>
+</section>
+
+<!-- Persona detail slides injected by JS -->
+<div id="personaSlides"></div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 15 — BIDDER STRATEGY
+══════════════════════════════════════════════ -->
+<section class="slide slide-light" id="slide-15" data-label="How to Win">
+  <div class="accent-bar-left" style="background:var(--red)"></div>
+  <div class="eyebrow eyebrow-red">Bidder Strategy</div>
+  <h2 class="section-title">Amerant Bank Arena: How to Win the Bid</h2>
+  <div class="strategy-hero red-s fade-in">
+    <div class="strategy-hero-label">The one thing that matters most</div>
+    <div class="strategy-hero-text" style="color:var(--red-dark)">Latin cultural fluency is the price of admission. South Florida is the most Hispanic large metro in the U.S. The operator who demonstrates genuine, specific, named Latin culinary partnerships — not a token Cuban sandwich — signals that they understand this market at its core. Get this right, and the entire bid gains credibility. Miss it, and no operational track record will compensate.</div>
+  </div>
+  <div class="strategy-cols fade-in">
+    <div class="strategy-col">
+      <div class="strat-header do-header">✓ &nbsp; DO — Winning Themes</div>
+      <div class="strat-body">
+        <div class="strat-item"><span class="strat-icon do">✓</span><span>Lead with named South Florida Cuban and Latin restaurant partnerships — by name, with narrative. Padrino's, Las Vegas Cuban Cuisine, CAO Bakery & Cafe have 40+ years of community trust that money can't replicate.</span></div>
+        <div class="strat-item"><span class="strat-icon do">✓</span><span>Design an event-specific programming matrix — the Latin billboard audience and the Monster Jam family are not the same F&B brief. Show that granularity in your bid.</span></div>
+        <div class="strat-item"><span class="strat-icon do">✓</span><span>Build a serious Cuban and Caribbean concessions offering as core menu, not specialty kiosk: croquetas, cubano, tostones, café cubano, pastelitos. This is the everyday South Florida table.</span></div>
+        <div class="strat-item"><span class="strat-icon do">✓</span><span>Invest significantly in suite and club programming that matches South Florida's corporate and wealth tier. The transplant executive class from the Northeast expects restaurant-quality hospitality, not buffet labels.</span></div>
+        <div class="strat-item"><span class="strat-icon do">✓</span><span>Build a craft cocktail program that includes mojitos, palomas, and coquito-inspired drinks as a permanent — not seasonal — menu feature. Latin cocktail culture is South Florida's cocktail culture.</span></div>
+        <div class="strat-item"><span class="strat-icon do">✓</span><span>Acknowledge the Panthers' growth trajectory in your bid narrative. Use the 50% revenue increase and back-to-back Cup data to frame a growing premium opportunity — not a flat-maintenance contract.</span></div>
+        <div class="strat-item"><span class="strat-icon do">✓</span><span>Name the Latin fan growth opportunity explicitly. An operator who understands that the next 200,000 Panthers fans will likely be younger and more Hispanic is an operator making a 10-year argument, not a 2-year one.</span></div>
+      </div>
+    </div>
+    <div class="strategy-col">
+      <div class="strat-header dont-header">✗ &nbsp; AVOID — What Sinks a Bid</div>
+      <div class="strat-body">
+        <div class="strat-item"><span class="strat-icon dont">✗</span><span>A national-chain-only concession program with no local South Florida culinary identity. This is the fastest path to cultural disqualification in this market.</span></div>
+        <div class="strat-item"><span class="strat-icon dont">✗</span><span>Treating Latin food as a single-kiosk novelty addition to a "regular" menu. Cuban food is the regular menu for a large portion of this market — treat it as the anchor, not the outlier.</span></div>
+        <div class="strat-item"><span class="strat-icon dont">✗</span><span>Calibrating all pricing to the affluent buyer profile without a clear value tier strategy. A meaningful portion of this market — particularly for Latin events and family shows — is mid-income or budget-constrained.</span></div>
+        <div class="strat-item"><span class="strat-icon dont">✗</span><span>A wine and spirits program that doesn't include Cuban-inspired cocktails or Latin spirits (rum, cachaca, mezcal alongside premium bourbon). This is a significant miss in this specific market.</span></div>
+        <div class="strat-item"><span class="strat-icon dont">✗</span><span>Benchmarking the premium program exclusively against other NHL arenas. The corporate and wealthy transplant fan base benchmarks against Miami and Fort Lauderdale's top restaurants.</span></div>
+        <div class="strat-item"><span class="strat-icon dont">✗</span><span>One static suite menu for the full season. The corporate client entertaining quarterly will notice, and the Panthers' rising premium tier demands evolution.</span></div>
+        <div class="strat-item"><span class="strat-icon dont">✗</span><span>Leading with your national footprint instead of your South Florida story. This venue wants a local partner, not a vendor that happens to have a Florida office.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 16 — PREMIUM F&B DEEP DIVE
+══════════════════════════════════════════════ -->
+<section class="slide slide-cream gold-accent" id="slide-16" data-label="Premium F&B">
+  <div class="accent-bar-left"></div>
+  <div class="eyebrow eyebrow-navy">Premium & Suite Strategy</div>
+  <h2 class="section-title">The Premium Tier Is the Contract</h2>
+  <div class="strategy-hero gold-s fade-in">
+    <div class="strategy-hero-label">The economic reality</div>
+    <div class="strategy-hero-text">Amerant Bank Arena has 74 private suites and 2,623 club seats. The corporate South Florida market — Chewy, Carnival Corporation, AutoNation, Magic Leap, Citrix — treats the arena as a client entertainment venue. The per-cap in premium is multiples of general concessions. If your suite program wins this audience, you've won the contract's economic core.</div>
+  </div>
+  <div class="strategy-cols fade-in">
+    <div class="strategy-col">
+      <div class="strat-header do-header">✓ &nbsp; Premium Programming Wins</div>
+      <div class="strat-body">
+        <div class="strat-item"><span class="strat-icon do">✓</span><span>Name a Miami or Fort Lauderdale restaurant partner for premium suite catering — one with name recognition among the corporate and wealth class (Stubborn Seed, Zuma, Dune by Laurent Tourondel)</span></div>
+        <div class="strat-item"><span class="strat-icon do">✓</span><span>Sommelier-curated wine list with South American and Spanish wines prominently featured — culturally resonant and premium-tier credible in a Latin-influenced market</span></div>
+        <div class="strat-item"><span class="strat-icon do">✓</span><span>Seasonal suite menu refreshes tied to Panthers milestones — playoff push, home opener, Cup anniversary. Static menus signal coasting to an audience that returns quarterly.</span></div>
+        <div class="strat-item"><span class="strat-icon do">✓</span><span>Premium rum program as a South Florida signature — Zacapa 23, Diplomatico Reserva, Bacardi Gran Reserva. This has no equivalent in any other NHL market and creates genuine arena identity.</span></div>
+        <div class="strat-item"><span class="strat-icon do">✓</span><span>Pre-event dinner package tied to suite access — the South Florida corporate client expects a full evening experience, not just game-time catering</span></div>
+      </div>
+    </div>
+    <div class="strategy-col">
+      <div class="strat-header dont-header">✗ &nbsp; Premium Programming Mistakes</div>
+      <div class="strat-body">
+        <div class="strat-item"><span class="strat-icon dont">✗</span><span>A domestic light beer-forward bar program in suites. This audience has moved well past it — premium craft, imported lager, and Latin spirits are expected at this income tier in South Florida.</span></div>
+        <div class="strat-item"><span class="strat-icon dont">✗</span><span>Suite menus that read like hotel banquet packages. The suite-holder knows every top restaurant in the market — match their reference point, not a catering catalog.</span></div>
+        <div class="strat-item"><span class="strat-icon dont">✗</span><span>Ignoring the Latin entertainment events in suite programming. When the Latin Billboard Awards fill the building, the suite clients expect the food to reflect the moment.</span></div>
+        <div class="strat-item"><span class="strat-icon dont">✗</span><span>Underinvesting in non-alcoholic premium options. South Florida's affluent Latin community includes significant segments that observe moderation — sophisticated mocktail programming matters.</span></div>
+        <div class="strat-item"><span class="strat-icon dont">✗</span><span>No loyalty or tenure recognition for long-term suite and season-ticket holders. This audience has been patient through lean years — acknowledge their history with the franchise.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 17 — TAKEAWAYS
+══════════════════════════════════════════════ -->
+<section class="slide slide-dark" id="slide-17" data-label="Takeaways">
+  <div class="accent-bar-left"></div>
+  <div class="eyebrow eyebrow-gold">Key Takeaways</div>
+  <h2 class="section-title">What Every Hospitality Bidder Must Know</h2>
+  <div class="takeaway-grid fade-in">
+    <div class="takeaway-card t1">
+      <div class="takeaway-num">01</div>
+      <div class="takeaway-venue">South Florida</div>
+      <p>Latin cultural fluency is not an add-on — it's the foundation. South Florida's culinary identity is rooted in Cuban and Caribbean tradition. An operator who treats this as a specialty offering has fundamentally misread the market. Croquetas and café cubano belong in the base menu, not the premium kiosk.</p>
+    </div>
+    <div class="takeaway-card t2">
+      <div class="takeaway-num">02</div>
+      <div class="takeaway-venue">Florida Panthers</div>
+      <p>The premium tier is the contract. Amerant Bank Arena has 74 suites and 2,623 club seats serving South Florida's corporate and wealth class. This audience benchmarks against Miami and Fort Lauderdale's best restaurants — not other NHL arenas. The suite program must clear that bar.</p>
+    </div>
+    <div class="takeaway-card t3">
+      <div class="takeaway-num">03</div>
+      <div class="takeaway-venue">Both operators</div>
+      <p>The buyer sample is not the full market. NHL fans nationally are 72% White and over-index significantly for income. South Florida's actual population is majority-minority and includes large lower-to-middle income communities. The gap between those profiles is the untapped audience — and the next 10 years of Panthers fan growth likely lives there.</p>
+    </div>
+    <div class="takeaway-card t4">
+      <div class="takeaway-num">04</div>
+      <div class="takeaway-venue">Event programming</div>
+      <p>Event-specific F&B is a competitive differentiator. Panthers hockey, Latin music events, Garth Brooks, Disney on Ice, and Monster Jam share a building but not an audience. The operator who demonstrates a genuine event-specific programming matrix in their bid will outperform the one who doesn't — full stop.</p>
+    </div>
+  </div>
+</section>
+
+<script>
+// ── PERSONA DATA ─────────────────────────────────────────────────────────────
+// displayColor = color used on DARK backgrounds (overview grid)
+// accentColor  = color used on LIGHT backgrounds (detail slides)
+const personas = [
+  {
+    id: 9,  // Will be renumbered to start after slide-8
+    name: "The Transplant Season Ticket Holder",
+    tagline: "Brought my team loyalty south with me",
+    venue: "Amerant Bank Arena", venueShort: "PANTHERS", headerClass: "navy-ph",
+    accentColor: "#041E42", displayColor: "#6BAED6", share: "~25% of Panthers hockey",
+    age: "48–65", income: "$125K–$250K+", marital: "Married", kids: "Older/grown", edu: "College / Graduate",
+    personicx: "Summit Estates, Established Elite, Comfortable Cornerstones",
+    who: "The original core of the Panthers fan base. Originally from the Northeast or Midwest — New York, Boston, Chicago, Detroit — relocated to South Florida for career, retirement, or quality of life. Brought their hockey passion south. Now established homeowners in Weston, Davie, Coral Springs, Boca Raton. Season ticket holders who supported the team through the lean years and now have a winning franchise to show off.",
+    lifestage: "Peak earning years or early retirement. High-value homeowners with significant equity. Discretionary income is high. They attend frequently, entertain clients and family in suites and clubs. They know how to eat and drink well — and they've been to good restaurants on both coasts.",
+    concessions: [
+      { bold: "Premium craft beer selection", text: " — Florida-based breweries (Funky Buddha, Due South, Cigar City) as the top tier, alongside imports and premium domestics. Brand recognition from their origin market is a plus." },
+      { bold: "Classic stadium food done with quality", text: " — a real hot dog, not a cheap one. A premium burger with named beef sourcing. This audience respects the stadium classic but expects it done properly." },
+      { bold: "Quality wine and spirits bar on the concourse", text: " — accessible for a quick pour between periods. Premium bourbon, single malt, and a house cocktail program." },
+    ],
+    premium: [
+      { bold: "Restaurant-quality suite catering", text: " with rotation — the static buffet is the fastest way to lose this client. Seasonal menus tied to Panthers milestones." },
+      { bold: "Named Miami / Fort Lauderdale restaurant partner", text: " running premium dining in club spaces. This audience knows the restaurant, knows the quality, and will tell their guests about it." },
+      { bold: "Premium rum program as a South Florida signature", text: " — unique to this market and deeply resonant with the adopted culture of transplants who've embraced South Florida's Caribbean identity." },
+    ]
+  },
+  {
+    id: 10,
+    name: "The South Florida Latin Fan",
+    tagline: "This city is mine now — this team is mine too",
+    venue: "Amerant Bank Arena", venueShort: "PANTHERS", headerClass: "red-ph",
+    accentColor: "#C8102E", displayColor: "#F07A8A", share: "~20% of Panthers hockey (growing)",
+    age: "28–48", income: "$55K–$120K", marital: "Mixed", kids: "Often yes", edu: "HS / some college",
+    personicx: "On the Go, Work & Play, Young Achievers, Active Lifestyles",
+    who: "Cuban-American, Venezuelan, Colombian, Caribbean residents of Broward and Miami-Dade. Grew up in South Florida or arrived as young adults. Hockey may not have been in their childhood — but the Panthers' back-to-back championships converted them. They're the fastest-growing segment of the Panthers fan base and the most critically important to the team's long-term local revenue story.",
+    lifestage: "Building career and family. Social and community-driven. Deep connections to Latin cultural identity. Food is central to every social experience. They eat at home restaurants that have been Cuban for three generations — and they will absolutely notice if the arena's version is inauthentic.",
+    concessions: [
+      { bold: "Authentic Cuban and Caribbean core menu", text: " — croquetas, cubano press sandwich, tostones with mojo, black beans and rice, pastelitos. These are not specialty items for this audience. They are the standard." },
+      { bold: "Café cubano and café con leche", text: " at accessible concourse bars — a cultural touchstone that will generate enormous organic goodwill from this community if executed correctly." },
+      { bold: "Mojitos and Latin cocktails as permanent bar staples", text: " — not seasonal, not as a single dedicated bar. A mojito or rum cocktail should be available everywhere in this building." },
+    ],
+    premium: [
+      { bold: "Latin chef-driven premium concept", text: " — a named South Florida Latin restaurant in club or suite programming signals deep market respect and generates genuine community pride." },
+      { bold: "Event-specific Latin programming on cultural nights", text: ": during Latin music events, the food and cocktail program should reflect the event. The building should feel like South Florida chose it." },
+    ]
+  },
+  {
+    id: 11,
+    name: "The Corporate Suite Host",
+    tagline: "The arena is my client entertainment venue",
+    venue: "Amerant Bank Arena", venueShort: "SUITES", headerClass: "purple-ph",
+    accentColor: "#3A2D6E", displayColor: "#9F94D8", share: "~12% of Panthers hockey",
+    age: "42–60", income: "$200K+", marital: "Married", kids: "Older/grown", edu: "Graduate school",
+    personicx: "Corporate Connected, Top Professionals, Established Elite",
+    who: "Senior executives, business owners, and client entertainment managers from South Florida's corporate class. Chewy, Carnival Corporation, AutoNation, Magic Leap, Citrix, HQ-level healthcare systems, and international banking. They buy suites or club seat packages and use them primarily for client and team entertainment. The quality of the F&B reflects on them as a host — not just on the arena.",
+    lifestage: "Late career peak. Significant corporate entertainment budget. Global travel exposure. Their frame of reference is the top Miami and Fort Lauderdale restaurants — Zuma, Stubborn Seed, Casa Tua. They have eaten well everywhere and will instantly benchmark the arena experience against it.",
+    concessions: [
+      { bold: "Not a primary concourse consumer", text: " — their interaction with F&B is almost exclusively through suite catering or club table service. When they do reach the concourse, it's for a specific premium spirits pour, not a hot dog." },
+    ],
+    premium: [
+      { bold: "White-glove suite catering with seasonal rotation", text: " — a static menu after Q2 is a client service failure for this audience. Quarterly updates are a minimum expectation." },
+      { bold: "Named restaurant partnership at the premium level", text: " — they recognize the brand, they've been there, and they'll mention it by name to their guests. That word-of-mouth is the most valuable marketing asset in the building." },
+      { bold: "Rum and Latin spirits premium program", text: " — unique, market-specific, and genuinely sophisticated. A Zacapa 23 or Diplomatico Reserva program places this arena in a different tier than any other NHL hospitality program in the country." },
+      { bold: "Pre-event dinner experience in premium club", text: " — the full evening, not just the game. A package that combines dining and hockey positions the arena as a complete entertainment destination." },
+    ]
+  },
+  {
+    id: 12,
+    name: "The South Florida Family",
+    tagline: "Making game night a memory",
+    venue: "Amerant Bank Arena", venueShort: "BOTH", headerClass: "teal-ph",
+    accentColor: "#0C5F5A", displayColor: "#4DBDB7", share: "~22% of all events",
+    age: "32–48", income: "$60K–$130K", marital: "Married", kids: "School-age", edu: "HS / some college",
+    personicx: "Active Lifestyles, Schools & Shopping, Young Achievers",
+    who: "South Florida parents attending as a planned family outing — Panthers games, Disney on Ice, family concerts. Broad income range reflecting the actual diversity of South Florida: some are transplant professionals from Weston; others are Cuban-American families from Hialeah or Miramar attending their first live event of the year. Budget discipline is real, but the event is special.",
+    lifestage: "Raising school-age children in the Broward / Palm Beach suburbs. Time-precious. They arrive early, plan ahead, and make F&B decisions as a group. Latin families skew toward shared-format eating. The experience of feeding the whole family without shock is the primary F&B priority.",
+    concessions: [
+      { bold: "Family meal bundles at clear price points", text: " — a combo that covers two adults and two kids without line-time math. $30–38 target. Visible, clearly signed at multiple stands." },
+      { bold: "Shareable Latin-forward formats", text: " — loaded croqueta plates, nachos with black bean and chorizo, tostones for the table. Latin families eat communally; the menu should enable it." },
+      { bold: "Kids' novelty souvenir cups", text: " bundled with soft drinks — proven upsell that feels like a treat, not an upcharge, across every market." },
+    ],
+    premium: [
+      { bold: "Family-accessible club option", text: " — not all South Florida families are budget-constrained. An approachable club tier at $60–80/person removes the exclusivity barrier for aspirational family groups." },
+      { bold: "Pre-loaded food vouchers at ticket purchase", text: " — reduces concourse friction and increases per-cap. South Florida families are mobile-forward; digital F&B integration is expected, not a bonus." },
+    ]
+  },
+  {
+    id: 13,
+    name: "The Younger Hispanic Convert",
+    tagline: "I just became a hockey fan — I didn't expect that",
+    venue: "Latin Events", venueShort: "LATIN EVENTS", headerClass: "coral-ph",
+    accentColor: "#C74B31", displayColor: "#F0907A", share: "~18% of Latin events",
+    age: "22–38", income: "Under $70K", marital: "Single or early family", kids: "Sometimes", edu: "Some college",
+    personicx: "Career Building, On the Go, Urban Diversity, Getting Established",
+    who: "Young South Florida Latinos who came to Amerant Bank Arena for Latin Billboard or a reggaeton headliner and — perhaps — are discovering the Panthers through the building's growing local presence. The lowest per-cap buyer at the arena, but the highest strategic importance for the next decade's fan development. Social media-driven, brand-aware, and acutely sensitive to authenticity versus performance.",
+    lifestage: "Early career or in school. Rent or live with family. Social life is very high priority. Experiences are social currency. They will photograph their food, judge the authenticity of the Latin menu, and have significant community reach. A genuine Cuban experience at this venue generates organic social amplification that advertising cannot buy.",
+    concessions: [
+      { bold: "Value Latin combo", text: " — croquetas + rice and beans + drink at $14–17. Accessible, culturally resonant, builds repeat behavior. The first food experience in a new venue shapes loyalty." },
+      { bold: "Instagrammable Latin-forward item", text: " — a dramatic loaded tostón, a visually striking pastelito flight, a vivid frozen mojito. Zero additional cost to design; massive organic reach from this audience." },
+      { bold: "Café cubano and cortadito at standard concession price", text: " — not a premium espresso program. The working-class Cuban coffee ritual at a democratic price point signals community belonging, not tourist extraction." },
+    ],
+    premium: [
+      { bold: "Micro-upsells only", text: ": $5 churrasco add-on, $4 upgraded mojito. Keep the rational purchase threshold low — the mental accounting is real and the income level is genuine." },
+    ]
+  },
+  {
+    id: 14,
+    name: "The Comfortable Empty Nester",
+    tagline: "Finally, time to just enjoy the evening",
+    venue: "Amerant Bank Arena", venueShort: "BOTH", headerClass: "gold-ph",
+    accentColor: "#B9975B", displayColor: "#D4B97A", share: "~13% of both venue types",
+    age: "54–70", income: "$100K–$200K+", marital: "Married", kids: "Grown / none", edu: "College / Graduate",
+    personicx: "Firmly Established, Comfortable Cornerstones, Country Comfort, Snowbirds",
+    who: "Older married couples — a significant portion of whom are seasonal South Florida residents (snowbirds) from Canada and the northern U.S. Their winters are spent in Boca Raton, Fort Lauderdale, and Palm Beach. They are long-term Panthers supporters by adoption, prefer comfort and quality over novelty, and have attended enough events to notice when quality has improved — or declined.",
+    lifestage: "Post-family, post-mortgage in many cases. Discretionary income is available and the pace of life is pleasantly slower. They are the most loyal repeat attenders and the most likely to hold a 20-year season ticket relationship with the franchise. They are also the segment most attuned to quality drift in hospitality.",
+    concessions: [
+      { bold: "Wine and quality beer at easily accessible bars", text: " — South American Malbec, Spanish Rioja, and Florida craft beer alongside quality imports. They won't hunt for it, but will upgrade if it's visible and well-signed." },
+      { bold: "Sit-down or semi-service dining within the venue", text: " — this audience genuinely values a place to sit, be served, and eat without standing at a counter. It's a quality-of-life differentiator that older fans will specifically choose a venue for." },
+    ],
+    premium: [
+      { bold: "Premium club with attentive, unhurried service", text: " — elevated classics: prime rib, grilled fish, quality salads. No gimmicks, no novelty. This audience wants to be treated as guests, not herded as customers." },
+      { bold: "Non-alcoholic premium options", text: " — sparkling water, upscale mocktails, premium café cubano service. This segment increasingly trends toward moderation and wants options that feel premium, not afterthought." },
+      { bold: "Loyalty recognition for long tenure", text: " — a complimentary upgrade or small gesture for a 10-year season ticket holder creates outsized return loyalty. They remember how hard the lean years were. Acknowledge it." },
+    ]
+  },
+];
+
+// ── BUILD PERSONA SLIDES ──────────────────────────────────────────────────────
+const personaSlideIds = personas.map((p, i) => `slide-p${i}`);
+// Reassign IDs
+personas.forEach((p, i) => { p.slideId = `slide-p${i}`; });
+
+const grid = document.getElementById('personaGrid');
+personas.forEach((p, i) => {
+  const dc = p.displayColor || p.accentColor;
+  const card = document.createElement('div');
+  card.className = 'persona-overview-card';
+  card.style.borderTopColor = dc;
+  card.innerHTML = `
+    <div class="po-name">${p.name}</div>
+    <div class="po-venue" style="color:${dc}">${p.venueShort}</div>
+    <div class="po-attrs">${p.age} &nbsp;·&nbsp; ${p.income}</div>
+    <div class="po-share" style="color:${dc}">${p.share}</div>
+  `;
+  card.onclick = () => { document.getElementById(p.slideId).scrollIntoView({ behavior: 'smooth' }); };
+  grid.appendChild(card);
+});
+
+const personaContainer = document.getElementById('personaSlides');
+personas.forEach(p => {
+  const fbHTML  = p.concessions.map(c => `<div class="fb-item"><div class="fb-dash" style="background:${p.accentColor}"></div><div class="fb-text"><strong>${c.bold}</strong>${c.text}</div></div>`).join('');
+  const premHTML = p.premium.map(c => `<div class="fb-item"><div class="fb-dash" style="background:${p.accentColor}"></div><div class="fb-text"><strong>${c.bold}</strong>${c.text}</div></div>`).join('');
+
+  const sec = document.createElement('section');
+  sec.className = 'slide persona-slide';
+  sec.id = p.slideId;
+  sec.setAttribute('data-label', p.name.split(' ').slice(-1)[0]);
+  sec.innerHTML = `
+    <div class="persona-header ${p.headerClass}">
+      <div class="ph-eyebrow">Persona · ${p.venueShort}</div>
+      <div class="ph-name">${p.name}</div>
+      <div class="ph-tagline">${p.tagline}</div>
+      <div class="ph-meta">
+        <span class="ph-tag">${p.age}</span>
+        <span class="ph-tag">${p.income}</span>
+        <span class="ph-tag">${p.marital}</span>
+        <span class="ph-tag">Kids: ${p.kids}</span>
+        <span class="ph-tag">${p.edu}</span>
+        <span class="ph-tag">${p.share}</span>
+      </div>
+    </div>
+    <div class="personicx-tag">Personicx: ${p.personicx}</div>
+    <div class="persona-body" style="margin-top:1.5rem">
+      <div>
+        <div class="persona-section">
+          <div class="persona-section-head" style="color:${p.accentColor}">Who they are</div>
+          <p>${p.who}</p>
+        </div>
+        <div class="persona-section">
+          <div class="persona-section-head" style="color:${p.accentColor}">Life stage</div>
+          <p>${p.lifestage}</p>
+        </div>
+      </div>
+      <div>
+        <div class="persona-section">
+          <div class="persona-col-label" style="color:${p.accentColor}; border-color:${p.accentColor}">Concession recommendations</div>
+          ${fbHTML}
+        </div>
+        <div class="persona-section" style="margin-top:1.5rem">
+          <div class="persona-col-label" style="color:${p.accentColor}; border-color:${p.accentColor}">Premium dining & club</div>
+          ${premHTML}
+        </div>
+      </div>
+    </div>
+  `;
+  personaContainer.appendChild(sec);
+});
+
+// ── CHAPTER MAP ──────────────────────────────────────────────────────────────
+const chapterMap = {
+  overview: { slides: ['slide-1','slide-2','slide-3'], subs: [
+    { id:'slide-1', label:'Cover' },
+    { id:'slide-2', label:'Methods' },
+    { id:'slide-3', label:'At a Glance' },
+  ]},
+  market: { slides: ['slide-4','slide-5','slide-6'], subs: [
+    { id:'slide-4', label:'South Florida Market' },
+    { id:'slide-5', label:'Food Culture' },
+    { id:'slide-6', label:'Event Mix' },
+  ]},
+  data: { slides: ['slide-7'], subs: [
+    { id:'slide-7', label:'Census vs. Buyer Data' },
+  ]},
+  personas: { slides: ['slide-8', ...personas.map(p=>p.slideId)], subs: [] },
+  strategy: { slides: ['slide-15','slide-16','slide-17'], subs: [
+    { id:'slide-15', label:'How to Win the Bid' },
+    { id:'slide-16', label:'Premium F&B Strategy' },
+    { id:'slide-17', label:'Key Takeaways' },
+  ]},
+};
+
+// Build persona nav subs
+chapterMap.personas.subs = [{ id:'slide-8', label:'All Personas' }];
+personas.forEach(p => { chapterMap.personas.subs.push({ id: p.slideId, label: p.name.replace(/^The /, '') }); });
+
+// Slide → chapter lookup
+const slideToChapter = {};
+Object.entries(chapterMap).forEach(([ch, cfg]) => {
+  cfg.slides.forEach(id => { slideToChapter[id] = ch; });
+});
+
+// ── TIER 2 RENDERER ──────────────────────────────────────────────────────────
+const tier2 = document.getElementById('navTier2');
+function renderTier2(ch, activeSlideId) {
+  const subs = chapterMap[ch]?.subs || [];
+  tier2.setAttribute('data-ch', ch);
+  tier2.innerHTML = subs.map(sub =>
+    `<button class="nav-sub${sub.id === activeSlideId ? ' active' : ''}" data-slide="${sub.id}">${sub.label}</button>`
+  ).join('');
+  tier2.querySelectorAll('.nav-sub').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const t = document.getElementById(btn.dataset.slide);
+      if (t) t.scrollIntoView({ behavior:'smooth' });
+    });
+  });
+}
+
+document.querySelectorAll('.nav-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    const ch = tab.dataset.ch;
+    const firstSlide = chapterMap[ch]?.slides[0];
+    if (firstSlide) { const el = document.getElementById(firstSlide); if (el) el.scrollIntoView({ behavior:'smooth' }); }
+  });
+});
+
+// ── SCROLL TRACKING ───────────────────────────────────────────────────────────
+const allSlides = document.querySelectorAll('.slide[id]');
+let currentSlideIdx = 0;
+
+function setActiveNav(slideId) {
+  const ch = slideToChapter[slideId] || 'overview';
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.toggle('active', t.dataset.ch === ch));
+  renderTier2(ch, slideId);
+}
+
+const scrollObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      currentSlideIdx = [...allSlides].indexOf(entry.target);
+      setActiveNav(entry.target.id);
+    }
+  });
+}, { threshold: 0.4 });
+allSlides.forEach(s => scrollObserver.observe(s));
+
+const fadeObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.15 });
+document.querySelectorAll('.fade-in').forEach(el => fadeObs.observe(el));
+
+document.addEventListener('keydown', e => {
+  const total = allSlides.length;
+  if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === 'PageDown') {
+    if (currentSlideIdx < total - 1) { currentSlideIdx++; allSlides[currentSlideIdx].scrollIntoView({ behavior:'smooth' }); }
+  } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft' || e.key === 'PageUp') {
+    if (currentSlideIdx > 0) { currentSlideIdx--; allSlides[currentSlideIdx].scrollIntoView({ behavior:'smooth' }); }
+  }
+});
+
+setActiveNav('slide-1');
+
+// ── PASSWORD GATE ─────────────────────────────────────────────────────────────
+// Password: panthers2026
+const HASH = '14473b8506455b891fd23f7e9fc3aaf84a5952e781725d9ef7bec730d55da4dd';
+
+async function sha256(str) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+}
+
+function showApp() {
+  document.getElementById('gate').classList.add('unlocked');
+  document.getElementById('mainNav').style.display = 'flex';
+}
+
+if (sessionStorage.getItem('via_panthers_unlocked') === '1') showApp();
+
+async function tryUnlock() {
+  const val = document.getElementById('pwInput').value.trim();
+  if (!val) return;
+  const h = await sha256(val);
+  if (h === HASH) {
+    sessionStorage.setItem('via_panthers_unlocked', '1');
+    showApp();
+  } else {
+    const err = document.getElementById('pwErr');
+    err.textContent = 'Incorrect password — try again.';
+    document.getElementById('pwInput').value = '';
+    document.getElementById('pwInput').focus();
+    setTimeout(() => { err.textContent = ''; }, 3000);
+  }
+}
+
+document.getElementById('pwBtn').addEventListener('click', tryUnlock);
+document.getElementById('pwInput').addEventListener('keydown', e => { if (e.key === 'Enter') tryUnlock(); });
+document.getElementById('pwInput').focus();
+</script>
+</body>
+</html>
