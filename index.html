@@ -95,6 +95,8 @@ nav {
 .nav-tab[data-ch="market"].active::after     { background: var(--red); }
 .nav-tab[data-ch="data"].active::after       { background: #9B8ABF; }
 .nav-tab[data-ch="personas"].active::after   { background: rgba(255,255,255,0.45); }
+.nav-tab[data-ch="competition"].active        { color: var(--gold); }
+.nav-tab[data-ch="competition"].active::after { background: var(--gold); }
 .nav-tab[data-ch="strategy"].active::after   { background: var(--gold); }
 .tab-dot {
   width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; opacity: 0.65;
@@ -544,6 +546,7 @@ a.cite-link:hover sup.cite { text-decoration: underline; opacity: 0.8; }
     <button class="nav-tab" data-ch="market"><span class="tab-dot" style="background:var(--red)"></span>South Florida</button>
     <button class="nav-tab" data-ch="data">Analysis</button>
     <button class="nav-tab" data-ch="personas">Personas</button>
+    <button class="nav-tab" data-ch="competition">Competition</button>
     <button class="nav-tab" data-ch="strategy">Strategy</button>
   </div>
   <div class="nav-tier2" id="navTier2" data-ch="overview">
@@ -858,6 +861,113 @@ a.cite-link:hover sup.cite { text-decoration: underline; opacity: 0.8; }
 
 <!-- Persona detail slides injected by JS -->
 <div id="personaSlides"></div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE COMPETITION — TOP CHEF BRIEF
+══════════════════════════════════════════════ -->
+<section class="slide" id="slide-competition" data-label="The Competition" style="background:#07101f">
+  <div class="eyebrow eyebrow-gold">Top Chef Competition Brief</div>
+  <h2 class="section-title" style="color:var(--off-white)">Cooking for the 1%</h2>
+  <p style="font-size:14px;color:var(--muted);margin-bottom:1.5rem;font-weight:300;max-width:760px">The Florida Panthers RFP includes a live culinary competition: bidding operators will prepare and serve a seated dinner for the top 1% of Panthers season ticket holders. This is not an F&B operations review. It is a single-evening demonstration of culinary vision, South Florida cultural fluency, and premium hospitality execution — judged by the most discerning, most loyal, and most financially invested fans in the building.</p>
+
+  <div style="font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin:0 0 0.75rem;border-bottom:1px solid rgba(180,140,0,0.2);padding-bottom:0.35rem">The Audience — Top 1% Season Ticket Holders</div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1rem;margin-bottom:1.75rem" class="fade-in">
+    <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:1rem">
+      <div style="font-size:22px;font-weight:700;color:var(--gold);letter-spacing:-0.02em">$1M+</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:0.25rem;line-height:1.55">median home value bracket for this tier — Acxiom confirms 9% of regional buyers reach this threshold; top STH skew higher still</div>
+    </div>
+    <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:1rem">
+      <div style="font-size:22px;font-weight:700;color:var(--gold);letter-spacing:-0.02em">NYC · BOS · DC</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:0.25rem;line-height:1.55">primary origin markets for the top STH transplant cohort — these guests have eaten at Per Se, Le Bernardin, and Nobu. They know what premium is.</div>
+    </div>
+    <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:1rem">
+      <div style="font-size:22px;font-weight:700;color:var(--gold);letter-spacing:-0.02em">Ages 45–62</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:0.25rem;line-height:1.55">peak-earning, mid-to-late career, traveled widely — skeptical of performance without substance. Won't be wowed by price point alone. They live at that price point.</div>
+    </div>
+    <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:1rem">
+      <div style="font-size:22px;font-weight:700;color:var(--gold);letter-spacing:-0.02em">Deep loyalty</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:0.25rem;line-height:1.55">back-to-back Cup champions — this group lived the run. Emotional investment in the Panthers brand is at an all-time high. The dinner must honor that.</div>
+    </div>
+  </div>
+
+  <div style="font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin:0 0 0.75rem;border-bottom:1px solid rgba(180,140,0,0.2);padding-bottom:0.35rem">What Winning Looks Like</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;max-width:920px" class="fade-in">
+    <div style="background:rgba(180,140,0,0.07);border-left:3px solid var(--gold);padding:1rem 1.2rem;border-radius:0 6px 6px 0">
+      <div style="font-size:11px;font-weight:700;color:var(--gold);margin-bottom:0.4rem;text-transform:uppercase;letter-spacing:0.08em">The Winning Thesis</div>
+      <div style="font-size:13px;color:var(--off-white);line-height:1.65">South Florida <em>at its highest expression</em> — not a national premium template dropped into a Miami zip code. The judges will see through a fine-dining performance that could happen anywhere. They want a meal that couldn't happen anywhere but here.</div>
+    </div>
+    <div style="background:rgba(200,16,46,0.07);border-left:3px solid var(--red);padding:1rem 1.2rem;border-radius:0 6px 6px 0">
+      <div style="font-size:11px;font-weight:700;color:var(--red);margin-bottom:0.4rem;text-transform:uppercase;letter-spacing:0.08em">What Loses</div>
+      <div style="font-size:13px;color:var(--off-white);line-height:1.65">Generic luxury. Wagyu for the sake of Wagyu. A sommelier who doesn't know the room. Plated food that looks like a hotel banquet. Price point alone will not impress people who live at that price point.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE COMPETITION MENU — MENU & EXPERIENCE
+══════════════════════════════════════════════ -->
+<section class="slide" id="slide-competition-menu" data-label="Menu &amp; Experience" style="background:#07101f">
+  <div class="eyebrow eyebrow-gold">Top Chef Competition — Concept</div>
+  <h2 class="section-title" style="color:var(--off-white)">"South Florida at the Table"</h2>
+  <p style="font-size:14px;color:var(--muted);margin-bottom:1.25rem;font-weight:300;max-width:760px">A four-course tasting menu structured as a culinary narrative of South Florida — from the sea to the land, from Cuba to the Keys. Every course sourced locally where possible. Every plate tells a specific story about where it came from and why it belongs here.</p>
+
+  <div style="font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin:0 0 0.65rem;border-bottom:1px solid rgba(180,140,0,0.2);padding-bottom:0.35rem">The Menu</div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:0.85rem;margin-bottom:1.5rem" class="fade-in">
+    <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:8px;padding:1rem 1.1rem">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:0.3rem">Reception</div>
+      <div style="font-size:14px;font-weight:600;color:var(--off-white);margin-bottom:0.3rem">Florida Stone Crab &amp; Champagne</div>
+      <div style="font-size:12px;color:var(--muted);line-height:1.55">Chilled stone crab claws, Joe's-style mustard sauce, NV Billecart-Salmon Brut on arrival. Stone crab season runs October–May — perfectly aligned with the Panthers calendar. The opening statement is unmistakably South Florida.</div>
+    </div>
+    <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:8px;padding:1rem 1.1rem">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:0.3rem">First Course</div>
+      <div style="font-size:14px;font-weight:600;color:var(--off-white);margin-bottom:0.3rem">Yellowtail Snapper Crudo</div>
+      <div style="font-size:12px;color:var(--muted);line-height:1.55">Day-boat Florida yellowtail, habanero-mango leche de tigre, crispy plantain chip, micro cilantro, finger lime pearls. The Caribbean and Latin DNA of South Florida in a single plate. Paired: Chablis Premier Cru.</div>
+    </div>
+    <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:8px;padding:1rem 1.1rem">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:0.3rem">Second Course</div>
+      <div style="font-size:14px;font-weight:600;color:var(--off-white);margin-bottom:0.3rem">Florida Spiny Lobster Bisque</div>
+      <div style="font-size:12px;color:var(--muted);line-height:1.55">Florida spiny lobster, saffron, toasted sofrito foam, chive oil, warm brioche. The kitchen's technical moment — classic French bisque structure with a distinctly South Florida soul. Paired: white Burgundy or Viognier.</div>
+    </div>
+    <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:8px;padding:1rem 1.1rem">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:0.3rem">Main Course</div>
+      <div style="font-size:14px;font-weight:600;color:var(--off-white);margin-bottom:0.3rem">Surf &amp; Turf — Black Grouper + A5 Wagyu</div>
+      <div style="font-size:12px;color:var(--muted);line-height:1.55">Pan-seared Florida black grouper, saffron-citrus beurre blanc, charred hearts of palm. Alongside: A5 Wagyu short rib, Cuban mojo glaze, sweet plantain purée, pickled red onion. Two proteins, two cultures, one South Florida statement. Paired: red Burgundy + Malbec.</div>
+    </div>
+    <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:8px;padding:1rem 1.1rem">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:0.3rem">Dessert</div>
+      <div style="font-size:14px;font-weight:600;color:var(--off-white);margin-bottom:0.3rem">Key Lime — Elevated</div>
+      <div style="font-size:12px;color:var(--muted);line-height:1.55">Key lime tart, torched Italian meringue, Florida sea salt, vanilla bean gelato, candied lime zest. The unavoidable South Florida ending — executed with the precision it deserves. Paired: late-harvest Riesling or a Florida rum digestif.</div>
+    </div>
+    <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:8px;padding:1rem 1.1rem">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:0.3rem">Signature Cocktail</div>
+      <div style="font-size:14px;font-weight:600;color:var(--off-white);margin-bottom:0.3rem">"The Sunrise"</div>
+      <div style="font-size:12px;color:var(--muted);line-height:1.55">Florida rum, fresh passionfruit, lime, champagne float, freeze-dried raspberry dust (Panthers red against gold). The opening cocktail that announces the evening — named for the team, worn like a second skin rather than a branded prop.</div>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;max-width:1000px" class="fade-in">
+    <div>
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin:0 0 0.6rem;border-bottom:1px solid rgba(180,140,0,0.2);padding-bottom:0.35rem">Ambiance &amp; Theming</div>
+      <div style="font-size:13px;color:var(--off-white);line-height:1.7">
+        <div style="margin-bottom:0.5rem"><strong style="color:var(--gold)">Space:</strong> Premium club or private suite converted to a chef's table environment — no arena signage, no plastic, no event lighting.</div>
+        <div style="margin-bottom:0.5rem"><strong style="color:var(--gold)">Design:</strong> Warm low light, linen tablecloths, full silver service, real stemware. Tropical botanical arrangements — birds of paradise, anthuriums — architectural, not kitschy.</div>
+        <div style="margin-bottom:0.5rem"><strong style="color:var(--gold)">Music:</strong> Live acoustic duo — Spanish guitar and soft vocals during reception, quiet jazz trio through dinner service.</div>
+        <div style="margin-bottom:0.5rem"><strong style="color:var(--gold)">Theater:</strong> Open kitchen view or tableside chef introduction at each course. Printed course cards with sourcing narrative accompany every plate.</div>
+        <div><strong style="color:var(--gold)">Send-home:</strong> Local Florida honey, small-batch hot sauce, or a handwritten recipe card. The meal ends with a gesture, not a checkout.</div>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin:0 0 0.6rem;border-bottom:1px solid rgba(180,140,0,0.2);padding-bottom:0.35rem">The Legends Differentiator</div>
+      <div style="font-size:13px;color:var(--off-white);line-height:1.7">
+        <div style="margin-bottom:0.5rem"><strong style="color:var(--gold)">Named local partner:</strong> Collaborate with a South Florida chef or institution — not as a vendor, but as co-author of the menu. A name with community equity no out-of-market operator can replicate.</div>
+        <div style="margin-bottom:0.5rem"><strong style="color:var(--gold)">Sourcing story:</strong> Every protein, produce item, and spirit carries a documented Florida provenance narrative. The judges are eating a map as much as a meal.</div>
+        <div style="margin-bottom:0.5rem"><strong style="color:var(--gold)">Sommelier present:</strong> Not a trained server pouring from a list — a wine director who can speak to every pairing decision and adapt in the room.</div>
+        <div style="margin-bottom:0.5rem"><strong style="color:var(--gold)">Synchronized service:</strong> Full brigade, all plates landed simultaneously. The technical standard is visible — and signals what the permanent program will look like at scale.</div>
+        <div><strong style="color:var(--gold)">Zero plastic:</strong> Every touchpoint from welcome cocktail to digestif uses proper serviceware. The competition night is a promise about every night to come.</div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ═══════════════════════════════════════════
      SLIDE 15 — BIDDER STRATEGY
@@ -1201,6 +1311,10 @@ const chapterMap = {
     { id:'slide-7', label:'Acxiom Data Findings' },
   ]},
   personas: { slides: ['slide-8', ...personas.map(p=>p.slideId)], subs: [] },
+  competition: { slides: ['slide-competition','slide-competition-menu'], subs: [
+    { id:'slide-competition', label:'The Brief' },
+    { id:'slide-competition-menu', label:'Menu & Experience' },
+  ]},
   strategy: { slides: ['slide-15','slide-16','slide-17'], subs: [
     { id:'slide-15', label:'How to Win the Bid' },
     { id:'slide-16', label:'Premium F&B Strategy' },
