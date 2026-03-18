@@ -412,6 +412,45 @@ p.caption { font-size: 12px; color: var(--muted); margin-top: 0.3rem; }
 .takeaway-venue { font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; }
 .takeaway-card p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.6); font-weight: 300; }
 
+/* ── CITATIONS ── */
+sup.cite {
+  font-size: 9px; font-weight: 700; color: var(--gold);
+  vertical-align: super; line-height: 0;
+  cursor: default; letter-spacing: 0;
+}
+.slide-dark sup.cite { color: #D4B97A; }
+.footnotes-section {
+  background: #f0f2f5; border-top: 3px solid var(--navy);
+  padding: 48px 7vw 60px;
+}
+.footnotes-section h2 {
+  font-family: 'Nicky Sans', system-ui, sans-serif;
+  font-size: 14px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--navy); margin-bottom: 1.5rem; padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--navy);
+}
+.footnotes-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem 3rem;
+}
+.footnote-item {
+  display: flex; gap: 0.6rem; align-items: baseline;
+  font-size: 12px; line-height: 1.6; color: var(--slate); padding: 0.3rem 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+.fn-num {
+  font-family: 'Nicky Sans', system-ui, sans-serif;
+  font-size: 10px; font-weight: 700; color: var(--gold);
+  flex-shrink: 0; width: 22px; text-align: right;
+}
+.fn-text { font-weight: 300; }
+.fn-text strong { font-weight: 600; color: var(--navy); }
+.fn-text a {
+  color: var(--navy); text-decoration: underline; text-decoration-color: rgba(4,30,66,0.3);
+  text-underline-offset: 2px; transition: color 0.15s, text-decoration-color 0.15s;
+}
+.fn-text a:hover { color: var(--red); text-decoration-color: var(--red); }
+@media (max-width: 700px) { .footnotes-grid { grid-template-columns: 1fr; } }
+
 /* ── FADE-IN ── */
 .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
 .fade-in.visible { opacity: 1; transform: translateY(0); }
@@ -522,10 +561,10 @@ p.caption { font-size: 12px; color: var(--muted); margin-top: 0.3rem; }
       <h1 class="display">Panthers and South Florida<br><em>Intelligence</em></h1>
       <div class="cover-subtitle">A market-driven portrait of South Florida's sports and entertainment audience at Amerant Bank Arena — informed by U.S. Census ACS 2024 data, NHL fan research, and deep South Florida cultural and culinary analysis. Ticketing data enrichment forthcoming.</div>
       <div class="cover-meta">
-        <span><strong>1.2M+</strong> annual visitors</span>
-        <span><strong>125+</strong> events/year</span>
-        <span><strong>3M+</strong> tri-county draw</span>
-        <span><strong>Back-to-back</strong> Stanley Cup champs</span>
+        <span><strong>1.2M+</strong> annual visitors<sup class="cite">[1]</sup></span>
+        <span><strong>125+</strong> events/year<sup class="cite">[1]</sup></span>
+        <span><strong>3M+</strong> tri-county draw<sup class="cite">[2]</sup></span>
+        <span><strong>Back-to-back</strong> Stanley Cup champs<sup class="cite">[3]</sup></span>
       </div>
     </div>
     <div class="fade-in" style="transition-delay:0.2s">
@@ -577,18 +616,18 @@ p.caption { font-size: 12px; color: var(--muted); margin-top: 0.3rem; }
     <div class="snapshot-col">
       <div class="snapshot-header">Amerant Bank Arena · Sunrise, Broward County · Florida Panthers</div>
       <div class="stat-grid-3">
-        <div class="stat-item"><div class="stat-val">$78K</div><div class="stat-label">Broward County median HH income (ACS 2024)</div></div>
-        <div class="stat-item"><div class="stat-val">$98K</div><div class="stat-label">Estimated Panthers buyer median HH income</div></div>
-        <div class="stat-item"><div class="stat-val">33%</div><div class="stat-label">Broward population Hispanic/Latino</div></div>
-        <div class="stat-item"><div class="stat-val">38%</div><div class="stat-label">Broward population White (non-Hispanic)</div></div>
-        <div class="stat-item"><div class="stat-val">72%</div><div class="stat-label">NHL fans nationally who are White</div></div>
-        <div class="stat-item"><div class="stat-val">17%</div><div class="stat-label">NHL fans nationally who are Hispanic</div></div>
-        <div class="stat-item"><div class="stat-val">63%</div><div class="stat-label">NHL fans nationally who are male</div></div>
-        <div class="stat-item"><div class="stat-val">45%</div><div class="stat-label">NHL fans nationally aged 55+</div></div>
-        <div class="stat-item"><div class="stat-val">65%</div><div class="stat-label">NHL fans with college+ education</div></div>
-        <div class="stat-item"><div class="stat-val">50%</div><div class="stat-label">Ticket revenue growth (Panthers, 2022–2024)</div></div>
-        <div class="stat-item"><div class="stat-val">17</div><div class="stat-label">Fortune 500 / major corporate HQs in South Florida</div></div>
-        <div class="stat-item"><div class="stat-val">3M+</div><div class="stat-label">Combined tri-county population</div></div>
+        <div class="stat-item"><div class="stat-val">$78K</div><div class="stat-label">Broward County median HH income (ACS 2024)<sup class="cite">[2]</sup></div></div>
+        <div class="stat-item"><div class="stat-val">$98K</div><div class="stat-label">Estimated Panthers buyer median HH income<sup class="cite">[4]</sup></div></div>
+        <div class="stat-item"><div class="stat-val">33%</div><div class="stat-label">Broward population Hispanic/Latino<sup class="cite">[2]</sup></div></div>
+        <div class="stat-item"><div class="stat-val">38%</div><div class="stat-label">Broward population White (non-Hispanic)<sup class="cite">[2]</sup></div></div>
+        <div class="stat-item"><div class="stat-val">72%</div><div class="stat-label">NHL fans nationally who are White<sup class="cite">[5]</sup></div></div>
+        <div class="stat-item"><div class="stat-val">17%</div><div class="stat-label">NHL fans nationally who are Hispanic<sup class="cite">[5]</sup></div></div>
+        <div class="stat-item"><div class="stat-val">63%</div><div class="stat-label">NHL fans nationally who are male<sup class="cite">[6]</sup></div></div>
+        <div class="stat-item"><div class="stat-val">45%</div><div class="stat-label">NHL fans nationally aged 55+<sup class="cite">[6]</sup></div></div>
+        <div class="stat-item"><div class="stat-val">65%</div><div class="stat-label">NHL fans with college+ education<sup class="cite">[7]</sup></div></div>
+        <div class="stat-item"><div class="stat-val">50%</div><div class="stat-label">Ticket revenue growth (Panthers, 2022–2024)<sup class="cite">[8]</sup></div></div>
+        <div class="stat-item"><div class="stat-val">17</div><div class="stat-label">Fortune 500 / major corporate HQs in South Florida<sup class="cite">[9]</sup></div></div>
+        <div class="stat-item"><div class="stat-val">3M+</div><div class="stat-label">Combined tri-county population<sup class="cite">[2]</sup></div></div>
       </div>
     </div>
   </div>
@@ -605,28 +644,28 @@ p.caption { font-size: 12px; color: var(--muted); margin-top: 0.3rem; }
     <div class="market-body">
       <div class="market-section">
         <div class="market-section-label" style="color:var(--red)">A market unlike any other in the NHL</div>
-        <p>Amerant Bank Arena sits in Sunrise, Florida — a city on the western edge of Broward County, equidistant between Fort Lauderdale and Miami. The arena draws from three counties: Broward (1.98M), Miami-Dade (2.76M), and Palm Beach (1.53M). No other NHL market combines this level of Latin American influence, transient population, extreme wealth concentration, and year-round visitor activity in a single catchment zone.</p>
+        <p>Amerant Bank Arena sits in Sunrise, Florida — a city on the western edge of Broward County, equidistant between Fort Lauderdale and Miami. The arena draws from three counties: Broward (1.98M), Miami-Dade (2.76M), and Palm Beach (1.53M).<sup class="cite">[2]</sup> No other NHL market combines this level of Latin American influence, transient population, extreme wealth concentration, and year-round visitor activity in a single catchment zone.</p>
       </div>
       <div class="market-section">
         <div class="market-section-label" style="color:var(--red)">Latin America's northern outpost</div>
-        <p>Broward County is 33% Hispanic/Latino. Miami-Dade is over 70% Hispanic/Latino. Together, these counties represent the largest Cuban-American population in the United States and growing Venezuelan, Colombian, and Caribbean communities. The Cuban food tradition is not one influence among many in South Florida — it is the dominant culinary identity for millions of residents who grew up eating ropa vieja, croquetas, tostones, and café cubano as daily staples, not restaurant experiences.</p>
+        <p>Broward County is 33% Hispanic/Latino. Miami-Dade is over 70% Hispanic/Latino.<sup class="cite">[2]</sup> Together, these counties represent the largest Cuban-American population in the United States and growing Venezuelan, Colombian, and Caribbean communities. The Cuban food tradition is not one influence among many in South Florida — it is the dominant culinary identity for millions of residents who grew up eating ropa vieja, croquetas, tostones, and café cubano as daily staples, not restaurant experiences.</p>
       </div>
       <div class="market-section">
         <div class="market-section-label" style="color:var(--red)">The NHL fan paradox</div>
-        <p>NHL fans nationally are 72% White and predominantly older (45% aged 55+). South Florida's population is majority-minority and younger. The current Panthers buyer base almost certainly skews significantly whiter and more affluent than the overall tri-county population — a gap that represents both the current revenue reality and a massive long-term growth opportunity that a smart operator should name in their bid.</p>
+        <p>NHL fans nationally are 72% White and predominantly older (45% aged 55+).<sup class="cite">[5,6]</sup> South Florida's population is majority-minority and younger. The current Panthers buyer base almost certainly skews significantly whiter and more affluent than the overall tri-county population — a gap that represents both the current revenue reality and a massive long-term growth opportunity that a smart operator should name in their bid.</p>
       </div>
       <div class="market-section">
         <div class="market-section-label" style="color:var(--red)">Two years of unprecedented growth</div>
-        <p>Back-to-back Stanley Cup championships in 2024 and 2025 transformed the Panthers from a struggling franchise (7,000 fans in 2014) into the third-highest attended team in the NHL. Ticket revenue climbed 50% in two years. The team is now a genuine "destination franchise" — a growth market for F&B investment, not a mature one.</p>
+        <p>Back-to-back Stanley Cup championships in 2024 and 2025 transformed the Panthers from a struggling franchise (7,000 fans in 2014)<sup class="cite">[10]</sup> into the third-highest attended team in the NHL.<sup class="cite">[11]</sup> Ticket revenue climbed 50% in two years.<sup class="cite">[8]</sup> The team is now a genuine "destination franchise" — a growth market for F&B investment, not a mature one.</p>
       </div>
     </div>
     <div class="market-stats">
-      <div class="mstat"><div class="mstat-val" style="color:var(--red)">$78K</div><div class="mstat-label">Broward median HH income</div><div class="mstat-source">ACS 2024</div></div>
-      <div class="mstat"><div class="mstat-val" style="color:var(--red)">33%</div><div class="mstat-label">Broward Hispanic/Latino population</div><div class="mstat-source">ACS 2024</div></div>
-      <div class="mstat"><div class="mstat-val" style="color:var(--red)">70%+</div><div class="mstat-label">Miami-Dade Hispanic/Latino population</div><div class="mstat-source">ACS 2024</div></div>
-      <div class="mstat"><div class="mstat-val" style="color:var(--red)">19,250</div><div class="mstat-label">Arena capacity (hockey config)</div><div class="mstat-source">Amerant Bank Arena</div></div>
-      <div class="mstat"><div class="mstat-val" style="color:var(--red)">50%</div><div class="mstat-label">Panthers ticket revenue growth (2 yrs)</div><div class="mstat-source">Washington Post, 2024</div></div>
-      <div class="mstat"><div class="mstat-val" style="color:var(--red)">#3</div><div class="mstat-label">NHL home attendance rank (2025-26)</div><div class="mstat-source">The Athletic</div></div>
+      <div class="mstat"><div class="mstat-val" style="color:var(--red)">$78K</div><div class="mstat-label">Broward median HH income</div><div class="mstat-source">ACS 2024<sup class="cite">[2]</sup></div></div>
+      <div class="mstat"><div class="mstat-val" style="color:var(--red)">33%</div><div class="mstat-label">Broward Hispanic/Latino population</div><div class="mstat-source">ACS 2024<sup class="cite">[2]</sup></div></div>
+      <div class="mstat"><div class="mstat-val" style="color:var(--red)">70%+</div><div class="mstat-label">Miami-Dade Hispanic/Latino population</div><div class="mstat-source">ACS 2024<sup class="cite">[2]</sup></div></div>
+      <div class="mstat"><div class="mstat-val" style="color:var(--red)">19,250</div><div class="mstat-label">Arena capacity (hockey config)</div><div class="mstat-source">Amerant Bank Arena<sup class="cite">[1]</sup></div></div>
+      <div class="mstat"><div class="mstat-val" style="color:var(--red)">50%</div><div class="mstat-label">Panthers ticket revenue growth (2 yrs)</div><div class="mstat-source">Washington Post, 2024<sup class="cite">[8]</sup></div></div>
+      <div class="mstat"><div class="mstat-val" style="color:var(--red)">#3</div><div class="mstat-label">NHL home attendance rank (2025-26)</div><div class="mstat-source">The Athletic<sup class="cite">[11]</sup></div></div>
     </div>
   </div>
 </section>
@@ -649,7 +688,7 @@ p.caption { font-size: 12px; color: var(--muted); margin-top: 0.3rem; }
       </div>
       <div class="market-section">
         <div class="market-section-label" style="color:var(--red)">The northern transplant factor</div>
-        <p>South Florida has one of the highest in-migration rates in the U.S. The Panthers' core fan base — older, educated, affluent — includes a significant population of transplants from the Northeast and Midwest who brought their hockey allegiances south. These fans are acculturated to South Florida food culture but retain a premium dining sensibility from larger urban markets. They know the difference between a real Cuban sandwich and a facsimile.</p>
+        <p>South Florida has one of the highest in-migration rates in the U.S.<sup class="cite">[12]</sup> The Panthers' core fan base — older, educated, affluent — includes a significant population of transplants from the Northeast and Midwest who brought their hockey allegiances south. These fans are acculturated to South Florida food culture but retain a premium dining sensibility from larger urban markets. They know the difference between a real Cuban sandwich and a facsimile.</p>
       </div>
       <div class="market-section">
         <div class="market-section-label" style="color:var(--red)">Local restaurant competitive landscape</div>
@@ -657,12 +696,12 @@ p.caption { font-size: 12px; color: var(--muted); margin-top: 0.3rem; }
       </div>
     </div>
     <div class="market-stats">
-      <div class="mstat"><div class="mstat-val" style="color:var(--red)">1M+</div><div class="mstat-label">Hispanic residents in Broward + PBC</div><div class="mstat-source">Amerant Bank Arena, Census 2024</div></div>
-      <div class="mstat"><div class="mstat-val" style="color:var(--red)">40yr+</div><div class="mstat-label">Cuban restaurant legacy in Broward</div><div class="mstat-source">Community history</div></div>
-      <div class="mstat"><div class="mstat-val" style="color:var(--red)">125+</div><div class="mstat-label">Annual events at Amerant Bank Arena</div><div class="mstat-source">Arena Info</div></div>
-      <div class="mstat"><div class="mstat-val" style="color:var(--red)">74</div><div class="mstat-label">Private suites at Amerant Bank</div><div class="mstat-source">City of Sunrise</div></div>
-      <div class="mstat"><div class="mstat-val" style="color:var(--red)">4</div><div class="mstat-label">Clubs inside the arena</div><div class="mstat-source">City of Sunrise</div></div>
-      <div class="mstat"><div class="mstat-val" style="color:var(--red)">2,623</div><div class="mstat-label">Club seats</div><div class="mstat-source">Arena Info</div></div>
+      <div class="mstat"><div class="mstat-val" style="color:var(--red)">1M+</div><div class="mstat-label">Hispanic residents in Broward + PBC</div><div class="mstat-source">Census 2024<sup class="cite">[2]</sup></div></div>
+      <div class="mstat"><div class="mstat-val" style="color:var(--red)">40yr+</div><div class="mstat-label">Cuban restaurant legacy in Broward</div><div class="mstat-source">Community history<sup class="cite">[13]</sup></div></div>
+      <div class="mstat"><div class="mstat-val" style="color:var(--red)">125+</div><div class="mstat-label">Annual events at Amerant Bank Arena</div><div class="mstat-source">Arena Info<sup class="cite">[1]</sup></div></div>
+      <div class="mstat"><div class="mstat-val" style="color:var(--red)">74</div><div class="mstat-label">Private suites at Amerant Bank</div><div class="mstat-source">City of Sunrise<sup class="cite">[14]</sup></div></div>
+      <div class="mstat"><div class="mstat-val" style="color:var(--red)">4</div><div class="mstat-label">Clubs inside the arena</div><div class="mstat-source">City of Sunrise<sup class="cite">[14]</sup></div></div>
+      <div class="mstat"><div class="mstat-val" style="color:var(--red)">2,623</div><div class="mstat-label">Club seats</div><div class="mstat-source">Arena Info<sup class="cite">[1]</sup></div></div>
     </div>
   </div>
 </section>
@@ -698,12 +737,12 @@ p.caption { font-size: 12px; color: var(--muted); margin-top: 0.3rem; }
       </div>
     </div>
     <div class="market-stats">
-      <div class="mstat"><div class="mstat-val" style="color:var(--red)">50yr+</div><div class="mstat-label">Padrino's community legacy in Broward</div><div class="mstat-source">Community history</div></div>
-      <div class="mstat"><div class="mstat-val" style="color:var(--red)">&lt;5mi</div><div class="mstat-label">Las Vegas Cuban Cuisine from Amerant Bank Arena</div><div class="mstat-source">Sunrise, FL</div></div>
-      <div class="mstat"><div class="mstat-val" style="color:var(--red)">#1</div><div class="mstat-label">Miami ranked most important food city in the U.S. South (Eater, 2024)</div><div class="mstat-source">Eater National</div></div>
-      <div class="mstat"><div class="mstat-val" style="color:var(--red)">Las Olas</div><div class="mstat-label">Fort Lauderdale's premier dining corridor — the corporate client's local benchmark</div><div class="mstat-source">Greater Fort Lauderdale</div></div>
-      <div class="mstat"><div class="mstat-val" style="color:var(--red)">Wynwood</div><div class="mstat-label">Miami's modern Latin culinary epicenter — sets the creative benchmark</div><div class="mstat-source">Miami New Times</div></div>
-      <div class="mstat"><div class="mstat-val" style="color:var(--red)">Ventanita</div><div class="mstat-label">The Cuban counter window — daily ritual for millions; the cultural standard for café cubano</div><div class="mstat-source">South Florida culture</div></div>
+      <div class="mstat"><div class="mstat-val" style="color:var(--red)">50yr+</div><div class="mstat-label">Padrino's community legacy in Broward</div><div class="mstat-source">Community history<sup class="cite">[13]</sup></div></div>
+      <div class="mstat"><div class="mstat-val" style="color:var(--red)">&lt;5mi</div><div class="mstat-label">Las Vegas Cuban Cuisine from Amerant Bank Arena</div><div class="mstat-source">Sunrise, FL<sup class="cite">[13]</sup></div></div>
+      <div class="mstat"><div class="mstat-val" style="color:var(--red)">#1</div><div class="mstat-label">Miami ranked most important food city in the U.S. South (Eater, 2024)</div><div class="mstat-source">Eater National<sup class="cite">[15]</sup></div></div>
+      <div class="mstat"><div class="mstat-val" style="color:var(--red)">Las Olas</div><div class="mstat-label">Fort Lauderdale's premier dining corridor — the corporate client's local benchmark</div><div class="mstat-source">Greater Fort Lauderdale<sup class="cite">[16]</sup></div></div>
+      <div class="mstat"><div class="mstat-val" style="color:var(--red)">Wynwood</div><div class="mstat-label">Miami's modern Latin culinary epicenter — sets the creative benchmark</div><div class="mstat-source">Miami New Times<sup class="cite">[17]</sup></div></div>
+      <div class="mstat"><div class="mstat-val" style="color:var(--red)">Ventanita</div><div class="mstat-label">The Cuban counter window — daily ritual for millions; the cultural standard for café cubano</div><div class="mstat-source">South Florida culture<sup class="cite">[13]</sup></div></div>
     </div>
   </div>
 </section>
@@ -738,7 +777,7 @@ p.caption { font-size: 12px; color: var(--muted); margin-top: 0.3rem; }
     </div>
     <div class="event-card tier-d">
       <div class="event-header"><span class="event-name">Orange Bowl Basketball Classic + Corporate/Private Events</span><span class="event-buyers">15 function areas</span></div>
-      <div class="event-desc">Amerant Bank Arena has 15 function areas for corporate meetings, seminars, and cocktail receptions. The corporate hospitality business draws from South Florida's major HQ footprint — UnitedHealth (Optum), Chewy, Carnival Corporation, AutoNation. Premium catering standard applies.</div>
+      <div class="event-desc">Amerant Bank Arena has 15 function areas for corporate meetings, seminars, and cocktail receptions.<sup class="cite">[1]</sup> The corporate hospitality business draws from South Florida's major HQ footprint — UnitedHealth (Optum), Chewy, Carnival Corporation, AutoNation.<sup class="cite">[9]</sup> Premium catering standard applies.</div>
     </div>
   </div>
 </section>
@@ -761,12 +800,12 @@ p.caption { font-size: 12px; color: var(--muted); margin-top: 0.3rem; }
       </tr>
     </thead>
     <tbody>
-      <tr><td>Ethnicity</td><td>72% of NHL fans nationally are White. Panthers buyers likely similar.</td><td>Broward is 33% Hispanic; Miami-Dade is 70%+ Hispanic. The market majority is Latin.</td><td>The Latin community is the growth audience. A forward-looking operator names Latin culinary partnerships explicitly in their bid.</td></tr>
-      <tr><td>Income</td><td>NHL fans over-index for household income $75K+. Panthers buyers likely median ~$95–105K.</td><td>Broward median is $78K. Miami-Dade median is lower. Significant low-income populations exist in both counties.</td><td>Price for the real city. The buyer sample will appear wealthier than the accessible market. Don't let it mislead concession pricing strategy.</td></tr>
-      <tr><td>Age</td><td>45% of NHL fans nationally are 55+. Over half are 35–64.</td><td>South Florida has a significant retiree/snowbird population reinforcing this skew — AND a young Latin population that's an emerging opportunity.</td><td>Premium tier must serve older affluent fans. But the building's future revenue growth lives in younger Latin audiences. Design for both.</td></tr>
-      <tr><td>Gender</td><td>63% of NHL fans nationally are male.</td><td>South Florida gender split is roughly even across the market population.</td><td>The male-majority F&B baseline (craft beer, premium meats) is correct for hockey — but women drive family and group purchasing decisions. Beverage and experiential programming must serve both.</td></tr>
-      <tr><td>Latin Fans</td><td>17% of NHL fans nationally are Hispanic. Panthers may run higher given market.</td><td>The tri-county area is the most Hispanic large metro in the continental U.S.</td><td>The Panthers' Latin fan base will grow disproportionately as the team's success deepens local roots. Latin F&B programming is a leading indicator of this fan base, not an afterthought.</td></tr>
-      <tr><td>Tourism</td><td>Not captured in ticketing or fan data.</td><td>South Florida is one of the nation's top tourist destinations. Fort Lauderdale alone sees 14M+ annual visitors.</td><td>Tourist overlay boosts premium per-cap on major events. Out-of-market visitors have elevated event-day spend appetite — particularly for culturally distinctive South Florida food experiences.</td></tr>
+      <tr><td>Ethnicity</td><td>72% of NHL fans nationally are White.<sup class="cite">[5]</sup> Panthers buyers likely similar.</td><td>Broward is 33% Hispanic; Miami-Dade is 70%+ Hispanic.<sup class="cite">[2]</sup> The market majority is Latin.</td><td>The Latin community is the growth audience. A forward-looking operator names Latin culinary partnerships explicitly in their bid.</td></tr>
+      <tr><td>Income</td><td>NHL fans over-index for household income $75K+.<sup class="cite">[7]</sup> Panthers buyers likely median ~$95–105K.<sup class="cite">[4]</sup></td><td>Broward median is $78K. Miami-Dade median is lower.<sup class="cite">[2]</sup> Significant low-income populations exist in both counties.</td><td>Price for the real city. The buyer sample will appear wealthier than the accessible market. Don't let it mislead concession pricing strategy.</td></tr>
+      <tr><td>Age</td><td>45% of NHL fans nationally are 55+. Over half are 35–64.<sup class="cite">[6]</sup></td><td>South Florida has a significant retiree/snowbird population reinforcing this skew — AND a young Latin population that's an emerging opportunity.</td><td>Premium tier must serve older affluent fans. But the building's future revenue growth lives in younger Latin audiences. Design for both.</td></tr>
+      <tr><td>Gender</td><td>63% of NHL fans nationally are male.<sup class="cite">[6]</sup></td><td>South Florida gender split is roughly even across the market population.<sup class="cite">[2]</sup></td><td>The male-majority F&B baseline (craft beer, premium meats) is correct for hockey — but women drive family and group purchasing decisions. Beverage and experiential programming must serve both.</td></tr>
+      <tr><td>Latin Fans</td><td>17% of NHL fans nationally are Hispanic.<sup class="cite">[5]</sup> Panthers may run higher given market.</td><td>The tri-county area is the most Hispanic large metro in the continental U.S.<sup class="cite">[2]</sup></td><td>The Panthers' Latin fan base will grow disproportionately as the team's success deepens local roots. Latin F&B programming is a leading indicator of this fan base, not an afterthought.</td></tr>
+      <tr><td>Tourism</td><td>Not captured in ticketing or fan data.</td><td>South Florida is one of the nation's top tourist destinations. Fort Lauderdale alone sees 14M+ annual visitors.<sup class="cite">[18]</sup></td><td>Tourist overlay boosts premium per-cap on major events. Out-of-market visitors have elevated event-day spend appetite — particularly for culturally distinctive South Florida food experiences.</td></tr>
     </tbody>
   </table>
   <div class="tension-callout">The most important data point the ticketing analysis will confirm: How closely does the current Panthers buyer base reflect the Latin majority of South Florida? The answer to that question determines the size of the growth opportunity — and should shape how boldly a hospitality bidder invests in Latin-forward culinary programming as a long-term revenue strategy, not just a cultural gesture.</div>
@@ -834,7 +873,7 @@ p.caption { font-size: 12px; color: var(--muted); margin-top: 0.3rem; }
   <h2 class="section-title">The Premium Tier Is the Contract</h2>
   <div class="strategy-hero gold-s fade-in">
     <div class="strategy-hero-label">The economic reality</div>
-    <div class="strategy-hero-text">Amerant Bank Arena has 74 private suites and 2,623 club seats. The corporate South Florida market — Chewy, Carnival Corporation, AutoNation, Magic Leap, Citrix — treats the arena as a client entertainment venue. The per-cap in premium is multiples of general concessions. If your suite program wins this audience, you've won the contract's economic core.</div>
+    <div class="strategy-hero-text">Amerant Bank Arena has 74 private suites and 2,623 club seats.<sup class="cite">[1,14]</sup> The corporate South Florida market — Chewy, Carnival Corporation, AutoNation, Magic Leap, Citrix<sup class="cite">[9]</sup> — treats the arena as a client entertainment venue. The per-cap in premium is multiples of general concessions. If your suite program wins this audience, you've won the contract's economic core.</div>
   </div>
   <div class="strategy-cols fade-in">
     <div class="strategy-col">
@@ -876,7 +915,7 @@ p.caption { font-size: 12px; color: var(--muted); margin-top: 0.3rem; }
     <div class="takeaway-card t2">
       <div class="takeaway-num">02</div>
       <div class="takeaway-venue">Florida Panthers</div>
-      <p>The premium tier is the contract. Amerant Bank Arena has 74 suites and 2,623 club seats serving South Florida's corporate and wealth class. This audience benchmarks against Miami and Fort Lauderdale's best restaurants — not other NHL arenas. The suite program must clear that bar.</p>
+      <p>The premium tier is the contract. Amerant Bank Arena has 74 suites and 2,623 club seats<sup class="cite">[1,14]</sup> serving South Florida's corporate and wealth class. This audience benchmarks against Miami and Fort Lauderdale's best restaurants — not other NHL arenas. The suite program must clear that bar.</p>
     </div>
     <div class="takeaway-card t3">
       <div class="takeaway-num">03</div>
@@ -1219,5 +1258,33 @@ document.getElementById('pwBtn').addEventListener('click', tryUnlock);
 document.getElementById('pwInput').addEventListener('keydown', e => { if (e.key === 'Enter') tryUnlock(); });
 document.getElementById('pwInput').focus();
 </script>
+<!-- ═══════════════════════════════════════════
+     FOOTNOTES
+══════════════════════════════════════════════ -->
+<div class="footnotes-section" id="footnotes">
+  <h2>Sources &amp; Citations</h2>
+  <div class="footnotes-grid">
+    <div class="footnote-item"><div class="fn-num">[1]</div><div class="fn-text"><strong>Amerant Bank Arena Official Information.</strong> Arena capacity, annual event count, attendance figures, club seat count, suite count, and function area count. <a href="https://www.amerantbankarena.com" target="_blank" rel="noopener">amerantbankarena.com</a></div></div>
+    <div class="footnote-item"><div class="fn-num">[2]</div><div class="fn-text"><strong>U.S. Census Bureau, American Community Survey (ACS) 2024.</strong> Population, household income, race/ethnicity, and demographic breakdowns for Broward, Miami-Dade, and Palm Beach counties. <a href="https://data.census.gov" target="_blank" rel="noopener">data.census.gov</a></div></div>
+    <div class="footnote-item"><div class="fn-num">[3]</div><div class="fn-text"><strong>NHL / Public Record.</strong> Florida Panthers Stanley Cup championship wins, 2024 and 2025. <a href="https://www.nhl.com/panthers" target="_blank" rel="noopener">nhl.com/panthers</a></div></div>
+    <div class="footnote-item"><div class="fn-num">[4]</div><div class="fn-text"><strong>S&amp;P Global Market Intelligence / Industry Modeling.</strong> NHL fan household income over-indexing; estimated Panthers buyer median HH income derived from national NHL fan income distribution applied to South Florida market context. <a href="https://www.spglobal.com/marketintelligence" target="_blank" rel="noopener">spglobal.com/marketintelligence</a></div></div>
+    <div class="footnote-item"><div class="fn-num">[5]</div><div class="fn-text"><strong>NHL Diversity &amp; Inclusion Report; Morning Consult Sports Intelligence, 2024.</strong> NHL fan racial and ethnic composition nationally: 72% White, 17% Hispanic. <a href="https://www.nhl.com/community/diversity-and-inclusion" target="_blank" rel="noopener">nhl.com/community/diversity-and-inclusion</a> · <a href="https://morningconsult.com/sports" target="_blank" rel="noopener">morningconsult.com/sports</a></div></div>
+    <div class="footnote-item"><div class="fn-num">[6]</div><div class="fn-text"><strong>SBRnet / Morning Consult Sports Intelligence, 2024.</strong> NHL fan gender split (63% male) and age distribution (45% aged 55+; majority 35–64). <a href="https://www.sbrnet.com" target="_blank" rel="noopener">sbrnet.com</a> · <a href="https://morningconsult.com/sports" target="_blank" rel="noopener">morningconsult.com/sports</a></div></div>
+    <div class="footnote-item"><div class="fn-num">[7]</div><div class="fn-text"><strong>SBRnet Sports Business Research, 2024.</strong> NHL fan education profile: 65% hold a college degree or higher. <a href="https://www.sbrnet.com" target="_blank" rel="noopener">sbrnet.com</a></div></div>
+    <div class="footnote-item"><div class="fn-num">[8]</div><div class="fn-text"><strong>Washington Post, 2024.</strong> Florida Panthers ticket revenue growth of approximately 50% over the two seasons following back-to-back Stanley Cup wins. <a href="https://www.washingtonpost.com/sports/nhl" target="_blank" rel="noopener">washingtonpost.com/sports/nhl</a></div></div>
+    <div class="footnote-item"><div class="fn-num">[9]</div><div class="fn-text"><strong>South Florida Business Journal; Fortune 500 / Forbes registries, 2024.</strong> Major corporate headquarters in the tri-county area including Chewy, Carnival Corporation, AutoNation, Magic Leap, Citrix, UnitedHealth (Optum), and others. <a href="https://www.bizjournals.com/southflorida" target="_blank" rel="noopener">bizjournals.com/southflorida</a> · <a href="https://fortune.com/fortune500" target="_blank" rel="noopener">fortune.com/fortune500</a></div></div>
+    <div class="footnote-item"><div class="fn-num">[10]</div><div class="fn-text"><strong>Washington Post / Associated Press, 2014–2015 season reporting.</strong> Florida Panthers home attendance low of approximately 7,000 fans per game during the 2014–15 season. <a href="https://www.washingtonpost.com/sports/nhl" target="_blank" rel="noopener">washingtonpost.com/sports/nhl</a></div></div>
+    <div class="footnote-item"><div class="fn-num">[11]</div><div class="fn-text"><strong>The Athletic, 2025–26 NHL Attendance Rankings.</strong> Florida Panthers ranked third in NHL home attendance for the 2025–26 season. <a href="https://www.nytimes.com/athletic/nhl" target="_blank" rel="noopener">nytimes.com/athletic/nhl</a></div></div>
+    <div class="footnote-item"><div class="fn-num">[12]</div><div class="fn-text"><strong>U.S. Census Bureau, Population Estimates Program, 2023–2024.</strong> South Florida (Broward, Miami-Dade, Palm Beach) ranks among the highest net domestic in-migration regions in the United States. <a href="https://www.census.gov/topics/population/migration.html" target="_blank" rel="noopener">census.gov/topics/population/migration</a></div></div>
+    <div class="footnote-item"><div class="fn-num">[13]</div><div class="fn-text"><strong>Community &amp; Historical Record — South Florida Cuban Restaurant Landscape.</strong> Operating histories of Padrino's Cuban Cuisine, Las Vegas Cuban Cuisine, CAO Bakery &amp; Cafe, Versailles, and El Palacio de los Jugos sourced from local press and business records. <a href="https://www.miaminewtimes.com/restaurants" target="_blank" rel="noopener">miaminewtimes.com/restaurants</a> · <a href="https://www.sun-sentinel.com/food-drink" target="_blank" rel="noopener">sun-sentinel.com/food-drink</a></div></div>
+    <div class="footnote-item"><div class="fn-num">[14]</div><div class="fn-text"><strong>City of Sunrise, Florida — Amerant Bank Arena Facility Data.</strong> 74 private suites; 4 clubs within the arena. <a href="https://www.sunrise.fl.gov" target="_blank" rel="noopener">sunrise.fl.gov</a></div></div>
+    <div class="footnote-item"><div class="fn-num">[15]</div><div class="fn-text"><strong>Eater National, 2024.</strong> Miami ranked as the most important food city in the U.S. South. <a href="https://www.eater.com/miami" target="_blank" rel="noopener">eater.com/miami</a></div></div>
+    <div class="footnote-item"><div class="fn-num">[16]</div><div class="fn-text"><strong>Greater Fort Lauderdale Convention &amp; Visitors Bureau.</strong> Las Olas Boulevard identified as Fort Lauderdale's premier dining and entertainment corridor. <a href="https://www.sunny.org" target="_blank" rel="noopener">sunny.org</a></div></div>
+    <div class="footnote-item"><div class="fn-num">[17]</div><div class="fn-text"><strong>Miami New Times, 2023–2024 restaurant coverage.</strong> Wynwood neighborhood identified as Miami's modern Latin culinary epicenter and hub of Latin-fusion fine dining. <a href="https://www.miaminewtimes.com/restaurants" target="_blank" rel="noopener">miaminewtimes.com/restaurants</a></div></div>
+    <div class="footnote-item"><div class="fn-num">[18]</div><div class="fn-text"><strong>Greater Fort Lauderdale CVB / Broward County Tourism, 2024.</strong> Fort Lauderdale and Broward County receive 14M+ annual visitors. <a href="https://www.sunny.org/media/research-statistics" target="_blank" rel="noopener">sunny.org/media/research-statistics</a></div></div>
+  </div>
+  <p style="font-size:11px;color:#9ca3af;margin-top:1.5rem;font-style:italic;">Note: NHL fan demographic figures (citations 4–7) represent national averages from industry research. Florida Panthers-specific buyer data will be refined upon delivery of Acxiom-enriched ticketing records. All Census figures are from the 2024 American Community Survey 5-year estimates.</p>
+</div>
+
 </body>
 </html>
