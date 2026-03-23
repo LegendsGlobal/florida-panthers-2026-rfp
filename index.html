@@ -1802,10 +1802,23 @@ document.querySelectorAll('.nav-tab').forEach(tab => {
 const allSlides = document.querySelectorAll('.slide[id]');
 let currentSlideIdx = 0;
 
+let slideTrackTimer = null;
+function trackSlide(slideId) {
+  clearTimeout(slideTrackTimer);
+  slideTrackTimer = setTimeout(() => {
+    if (!sessionStorage.getItem('via_panthers_unlocked')) return;
+    if (!window.goatcounter) return;
+    const viewer = sessionStorage.getItem('via_panthers_viewer') || 'unknown';
+    const label = document.querySelector(`.slide[id="${slideId}"]`)?.dataset.label || slideId;
+    window.goatcounter.count({ path: 'slide/' + slideId, title: viewer + ' · ' + label, event: true });
+  }, 1500);
+}
+
 function setActiveNav(slideId) {
   const ch = slideToChapter[slideId] || 'overview';
   document.querySelectorAll('.nav-tab').forEach(t => t.classList.toggle('active', t.dataset.ch === ch));
   renderTier2(ch, slideId);
+  trackSlide(slideId);
 }
 
 const scrollContainer = document.getElementById('scroll-container');
