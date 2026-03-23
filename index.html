@@ -544,7 +544,8 @@ a.cite-link:hover sup.cite { text-decoration: underline; opacity: 0.8; }
   <div class="gate-inner">
     <div class="gate-wordmark">Venue Audience Intelligence</div>
     <div class="gate-title">Confidential<br>Report</div>
-    <div class="gate-sub">Enter the access password to continue</div>
+    <div class="gate-sub">Enter your name and the access password to continue</div>
+    <input type="text" id="nameInput" class="gate-field" placeholder="Your name" autocomplete="name" style="margin-bottom:0.75rem">
     <input type="password" id="pwInput" class="gate-field" placeholder="Password" autocomplete="current-password">
     <button class="gate-btn" id="pwBtn">Enter →</button>
     <div class="gate-err" id="pwErr"></div>
@@ -1846,17 +1847,25 @@ function showApp() {
   document.getElementById('mainNav').style.display = 'flex';
 }
 
-if (sessionStorage.getItem('via_panthers_unlocked') === '1') showApp();
+if (sessionStorage.getItem('via_panthers_unlocked') === '1' && sessionStorage.getItem('via_panthers_viewer')) showApp();
 
 async function tryUnlock() {
+  const name = document.getElementById('nameInput').value.trim();
   const val = document.getElementById('pwInput').value.trim();
+  const err = document.getElementById('pwErr');
+  if (!name) {
+    err.textContent = 'Please enter your name.';
+    document.getElementById('nameInput').focus();
+    setTimeout(() => { err.textContent = ''; }, 3000);
+    return;
+  }
   if (!val) return;
   const h = await sha256(val);
   if (h === HASH) {
     sessionStorage.setItem('via_panthers_unlocked', '1');
+    sessionStorage.setItem('via_panthers_viewer', name);
     showApp();
   } else {
-    const err = document.getElementById('pwErr');
     err.textContent = 'Incorrect password — try again.';
     document.getElementById('pwInput').value = '';
     document.getElementById('pwInput').focus();
@@ -1865,8 +1874,9 @@ async function tryUnlock() {
 }
 
 document.getElementById('pwBtn').addEventListener('click', tryUnlock);
+document.getElementById('nameInput').addEventListener('keydown', e => { if (e.key === 'Enter') document.getElementById('pwInput').focus(); });
 document.getElementById('pwInput').addEventListener('keydown', e => { if (e.key === 'Enter') tryUnlock(); });
-document.getElementById('pwInput').focus();
+document.getElementById('nameInput').focus();
 </script>
 <!-- ═══════════════════════════════════════════
      FOOTNOTES
